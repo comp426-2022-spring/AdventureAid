@@ -6,8 +6,16 @@
   "scripts": {
     "test": "index.js"
   },
-  "author": "Stephen Buck",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2022-spring/a99-hamal"
+  },
+  "author": "a99-hamal",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/comp426-2022-spring/a99-hamal/issues"
+  },
+  "homepage": "https://github.com/comp426-2022-spring/a99-hamal#readme",
   "dependencies": {
     "node-fetch": "^3.2.3"
   },

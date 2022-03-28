@@ -8,9 +8,9 @@ async function getCountries() {
     const data = await response.json()
     
     let countries = []
-    data.forEach(element => {
+    for (const element of data) {
         countries.push(element.name)
-    });
+    }
     return countries
 }
 

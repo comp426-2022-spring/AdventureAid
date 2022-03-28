@@ -4,9 +4,9 @@ import { includeVaccinations, includeLanguages } from "./app-requests.js"
 const countries = await getCountries()
 const data = await createCountriesData(countries)
 
-const vaccinations = new Set(['Malaria', 'Hepatitis A', 'Hepatitis B', 'Yellow fever', 'Tyfoid', 'DTP'])
+const vaccinations = new Set([ 'Hepatitis A', 'Hepatitis B', 'Yellow fever', 'Tyfoid', 'DTP'])
 const postVaccines = includeVaccinations(vaccinations, data)
-const testlanguages = new Set(['Persian'])
+const testlanguages = new Set(['Persian', 'Urdu', 'Spanish'])
 const postLanguages = includeLanguages(testlanguages, postVaccines)
 for (const country of postLanguages) {
     console.log(country.names.name)

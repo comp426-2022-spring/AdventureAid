@@ -1,3 +1,4 @@
+# Project Structure
 backend - contains Express server and requests to travelbriefing API
 
     app-requests.js - contains functions to select countries based on user profile data (languages and vaccinations)

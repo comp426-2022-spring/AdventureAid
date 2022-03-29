@@ -8,5 +8,7 @@ Backend - contains code relavent to handling GET requests from travelbriefing AP
         getCountries - Function to get countries list from travelbriefing API
         getCountryData - Function to get country data from API
         createCountriesData - Function to create array of all the country data (each in JSON form)
-        
+    
+    server.js - contains API endpoints to connect to frontend
+
     test.js - testing file

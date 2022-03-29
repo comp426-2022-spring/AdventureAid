@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/comp426-2022-spring/a99-hamal#readme",
   "dependencies": {
+    "express": "^4.17.3",
     "node-fetch": "^3.2.3"
   },
   "type": "module"

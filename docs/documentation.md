@@ -1,4 +1,4 @@
-Backend - contains code relavent to handling GET requests from travelbriefing API and our own API
+backend - contains Express server and requests to travelbriefing API
 
     app-requests.js - contains functions to select countries based on user profile data (languages and vaccinations)
         includeVaccinations - Function to narrow down countries based on the vaccines a person has
@@ -12,3 +12,5 @@ Backend - contains code relavent to handling GET requests from travelbriefing AP
     server.js - contains API endpoints to connect to frontend
 
     test.js - testing file
+
+client - contains ReactJS frontend package

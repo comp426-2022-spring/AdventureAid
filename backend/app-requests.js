@@ -22,7 +22,6 @@ function includeLanguages(languages, data) {
     let countries = []
     for (const element of data) {
         const countryLanguages = element.language
-        let flag = false
         for (const language of countryLanguages) {
             if (languages.has(language.language)) {
                 countries.push(element)

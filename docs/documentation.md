@@ -12,6 +12,16 @@ backend - contains Express server and requests to travelbriefing API
     
     server.js - contains API endpoints to connect to frontend
 
+        Desired endpoints
+        getAllCountries (returns all countries)
+        getProfileCountries (takes database information to return countries that match the profile)
+        createUser (creates user in the database)
+        getUser (gets user information from database)
+        updateUser (updates user information)
+        deleteUser (deletes user from databse)
+        getCountry(country) (gets information for a specific country)
+
+
     test.js - testing file
 
 client - contains ReactJS frontend package

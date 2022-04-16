@@ -3,7 +3,7 @@ const Log = require('../schemas/log-schema');
 
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
-// The router will be added as a middleware and will take control of requests starting with path /record.
+// The router will be added as a middleware and will take control of requests starting with path /logs.
 const logsRoutes = express.Router();
 
 // This will help us connect to the database
@@ -14,7 +14,7 @@ const { db } = require("../schemas/log-schema");
 const ObjectId = require("mongodb").ObjectId;
 
 
-// This section will help you get a list of all the users.
+// This section will help you get a list of all the logs.
 logsRoutes.route("/logs").get(function (req, res) {
   let db_connect = dbo.getDb("AdventureAid");
   db_connect
@@ -26,7 +26,7 @@ logsRoutes.route("/logs").get(function (req, res) {
     });
 });
 
-// This section will help you get a single user by id
+// This section will help you get a single log by id
 logsRoutes.route("/logs/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id)};
@@ -38,10 +38,10 @@ logsRoutes.route("/logs/:id").get(function (req, res) {
       });
 });
 
-// This section will help you create a new user.
+// This section will help you create a new log.
 logsRoutes.route("/logs/add").post(function (req, response) {
   let db_connect = dbo.getDb();
-  //creates a newUser document using the User model
+  //creates a newUser document using the Log model
   let newLog = new Log({  
     remote_addr: req.body.remote_addr, 
     remote_user: req.body.remote_user, 

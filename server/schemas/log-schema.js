@@ -12,7 +12,6 @@ var logSchema = new mongoose.Schema({
     referrer_url: String,            
     user_agent: String
 });
-
 module.exports = mongoose.model(
      'log', logSchema, 'Logs' );
 

@@ -1,4 +1,5 @@
 const express = require("express");
+const User = require('../schemas/user-schema'); 
 
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
@@ -39,12 +40,22 @@ usersRoutes.route("/users/:id").get(function (req, res) {
 // This section will help you create a new user.
 usersRoutes.route("/users/add").post(function (req, response) {
   let db_connect = dbo.getDb();
-  let myobj = {
-    name: req.body.name,
-    position: req.body.position,
-    level: req.body.level,
-  };
-  db_connect.collection("users").insertOne(myobj, function (err, res) {
+  //creates a newUser document using the User model
+  let newUser = new User({
+      _id: req.body.username,
+      name: req.body.name,
+      vaccinations: { 
+      malaria: req.body.malaria,
+      hepatitisA: req.body.hepatitisA,
+      hepatitisB: req.body.hepatitisB,
+      yellowFever: req.body.yellowFever,
+      tyfoid: req.body.tyfoid,
+      dtp: req.body.dtp,
+      cholera: req.body.cholera
+    },
+    languages: req.body.languages
+  });
+  db_connect.collection("users").insertOne(newUser, function (err, res) {
     if (err) throw err;
     response.json(res);
   });

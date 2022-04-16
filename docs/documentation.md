@@ -1,5 +1,18 @@
 # Project Structure
 backend - contains Express server and requests to travelbriefing API
+    
+    db - contains database connection files
+        conn.js - used to connect server to MongoDB database
+
+    routes - contains endpoints directed to the users and logs databases
+        users.js - contains functions related to the users database
+            listAll - gets a list of all users
+            listUser - fetches a specified user
+            createUser - creates a new user profile
+            updateUser - updates the specified user
+            deleteUser - deletes the specified user
+        logs.js - contains functions related to the logs database
+            
 
     app-requests.js - contains functions to select countries based on user profile data (languages and vaccinations)
         includeVaccinations - Function to narrow down countries based on the vaccines a person has

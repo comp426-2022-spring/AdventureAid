@@ -18,10 +18,13 @@
   },
   "homepage": "https://github.com/comp426-2022-spring/a99-hamal#readme",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "mongodb": "^4.5.0",
     "node-fetch": "^3.2.3"
   },
-  "type": "module",
+  "type": "commonjs",
   "devDependencies": {
     "nodemon": "^2.0.15"
   }

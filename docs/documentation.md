@@ -55,3 +55,10 @@ server - contains Express server and requests to travelbriefing API
         /app/ - GET - default endpoint
 
 client - contains ReactJS frontend package
+    src
+        components - stores component related react code
+            TestButton.jsx - temporary component used to test connecting to all of the server endpoints 
+        services
+            RequestService.js - contains functions that interact with each endpoint in server
+        
+        App.js - entry point for adding react code / components (preffered)

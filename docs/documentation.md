@@ -1,5 +1,6 @@
 # Project Structure
 server - contains Express server and requests to travelbriefing API
+
     db - contains database connection files
         conn.js - used to connect server to MongoDB database
         

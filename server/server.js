@@ -50,7 +50,7 @@ app.get('/app/getCountries/', async (req, res) => {
   });
 
 // Endpoint that gets the JSON data for a specific country
-app.get('/app/getCountry/:country', async (req, res) => {
+app.get('/app/getCountry/:country/', async (req, res) => {
   // Respond with status 200
     res.statusCode = 200;
     res.statusMessage = 'OK';
@@ -59,7 +59,7 @@ app.get('/app/getCountry/:country', async (req, res) => {
     res.json(data)
   });
 
-  
+
 // Endpoint that gets a JSON array of all data for every country  
 app.get('/app/getAllCountriesData/', async (req, res) => {
   // Respond with status 200

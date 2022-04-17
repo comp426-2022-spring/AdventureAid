@@ -31,5 +31,5 @@ function includeLanguages(languages, data) {
     }
     return countries
 }
-
-export { includeVaccinations, includeLanguages }
+module.exports = { includeVaccinations, includeLanguages }
+// export { includeVaccinations, includeLanguages }

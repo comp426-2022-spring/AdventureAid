@@ -1,5 +1,7 @@
-import { getCountries, createCountriesData } from "./travelbriefing-requests.js"
-import { includeVaccinations, includeLanguages } from "./app-requests.js"
+// import { getCountries, createCountriesData } from "./travelbriefing-requests.js"
+const { getCountries, createCountriesData } = require('./travelbriefing-requests')
+// import { includeVaccinations, includeLanguages } from "./app-requests.js"
+const { includeVaccinations, includeLanguages } = require('./app-requests')
 // Testing fetching all countries json data
 const countries = await getCountries()
 const data = await createCountriesData(countries)

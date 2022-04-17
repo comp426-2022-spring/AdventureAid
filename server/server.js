@@ -49,31 +49,32 @@ app.get('/app/getCountries/', async (req, res) => {
     res.json(countries)
   });
 
-  // Endpoint that gets the JSON data for a specific country
-  app.get('/app/getCountry/:country', async (req, res) => {
-    // Respond with status 200
-      res.statusCode = 200;
-      res.statusMessage = 'OK';
-      const country = req.params.country
-      const data = await getCountryData(country)
-      res.json(data)
-    });
+// Endpoint that gets the JSON data for a specific country
+app.get('/app/getCountry/:country', async (req, res) => {
+  // Respond with status 200
+    res.statusCode = 200;
+    res.statusMessage = 'OK';
+    const country = req.params.country
+    const data = await getCountryData(country)
+    res.json(data)
+  });
 
-  // Endpoint that gets a JSON array of all data for every country  
-  app.get('/app/getAllCountriesData/', async (req, res) => {
-    // Respond with status 200
-      res.statusCode = 200;
-      res.statusMessage = 'OK';
-      const countries = await createCountriesData(await getCountries())
-      res.json(countries)
-    });
+  
+// Endpoint that gets a JSON array of all data for every country  
+app.get('/app/getAllCountriesData/', async (req, res) => {
+  // Respond with status 200
+    res.statusCode = 200;
+    res.statusMessage = 'OK';
+    const countries = await createCountriesData(await getCountries())
+    res.json(countries)
+  });
   
 app.get('/app/', (req, res) => {
   // Respond with status 200
-      res.statusCode = 200;
-      res.statusMessage = 'OK';
-      res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
-      res.end(res.statusCode+ ' ' +res.statusMessage)
+    res.statusCode = 200;
+    res.statusMessage = 'OK';
+    res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
+    res.end(res.statusCode+ ' ' +res.statusMessage)
   });
 
 app.listen(port, () => {

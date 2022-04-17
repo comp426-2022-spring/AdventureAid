@@ -15,7 +15,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 
 // This section will help you get a list of all the logs.
-logsRoutes.route("/logs").get(function (req, res) {
+logsRoutes.route("/app/logs/").get(function (req, res) {
   let db_connect = dbo.getDb("AdventureAid");
   db_connect
     .collection("logs")
@@ -27,7 +27,7 @@ logsRoutes.route("/logs").get(function (req, res) {
 });
 
 // This section will help you get a single log by id
-logsRoutes.route("/logs/:id").get(function (req, res) {
+logsRoutes.route("/app/logs/:id/").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id)};
   db_connect
@@ -39,7 +39,7 @@ logsRoutes.route("/logs/:id").get(function (req, res) {
 });
 
 // This section will help you create a new log.
-logsRoutes.route("/logs/add").post(function (req, response) {
+logsRoutes.route("/app/logs/add/").post(function (req, response) {
   let db_connect = dbo.getDb();
   //creates a newUser document using the Log model
   let newLog = new Log({  

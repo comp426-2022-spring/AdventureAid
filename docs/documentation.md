@@ -1,27 +1,55 @@
 # Project Structure
 backend - contains Express server and requests to travelbriefing API
+    db
+        conn.js - used to connect to MongoDB 
 
-    app-requests.js - contains functions to select countries based on user profile data (languages and vaccinations)
-        includeVaccinations - Function to narrow down countries based on the vaccines a person has
-        includeLanguages - Function to narrow down countries based on the languages a person knows
+    routes
+        logs.js - endpoints to add new log documents
+            /app/logs/ - GET - gets all of the logs in the database
+            /app/logs/:id/ - GET - looks up log by id
+            /app/logs/add/ - POST - adds a log; the request body should be a JSON with the following fields:
+                remote_addr: String, 
+                remote_user: String, 
+                date: Date,
+                method: String, 
+                url: String, 
+                http_version: Number, 
+                status: Number, 
+                content_length: Number,
+                referrer_url: String,            
+                user_agent: String
 
-    travelbriefing-requests.js - contains functions that perform GET requests from travelbriefing API
-        getCountries - Function to get countries list from travelbriefing API
-        getCountryData - Function to get country data from API
-        createCountriesData - Function to create array of all the country data (each in JSON form)
-    
-    server.js - contains API endpoints to connect to frontend
+        users.js - endpoints to interact with user database
+            /app/users/ - GET - gets all of the users in the database
+            /app/users/:id/ - GET - gets a specific user based on id (username)
+            /app/getUserCountries/:id/ - GET - gets JSON data for all of the countries that fit a user's profile
+            /app/users/add/ - POST - adds a user; the request body should be a JSON with the following fields:
+                username: String,
+                name: String,
+                malaria: Boolean,
+                hepatitisA: Boolean,
+                hepatitisB: Boolean,
+                yellowFever: Boolean,
+                tyfoid: Boolean,
+                dtp: Boolean,
+                cholera: Boolean,
+                languages: [String] (Array of Strings)
+            /app/update/:id/ - POST - updates a user based on ID; body should be a JSON with the same format as add
+            /app/:id/ - DELETE - deletes user from the database with specified id
 
-        Desired endpoints
-        getAllCountries (returns all countries)
-        getProfileCountries (takes database information to return countries that match the profile)
-        createUser (creates user in the database)
-        getUser (gets user information from database)
-        updateUser (updates user information)
-        deleteUser (deletes user from databse)
-        getCountry(country) (gets information for a specific country)
-
-
-    test.js - testing file
+    schemas
+        log-schema.js - contains Schema for information in a log document
+        user-schema.js - contains Schema for information in a user document
+        
+    config.env - contains MongoDB URI and Port number
+        
+    package-lock.json - contains server package information
+    package.json - contains server package information
+        
+    server.js - contains endpoints that interact with travelbriefing API
+        /app/getCountries/ - GET - gets list of countries in travelbriefing API
+        /app/getCountry/:country/ - GET - gets JSON data for a specific country
+        /app/getAllCountriesData/ - GET - gets JSON array that contains JSON data for every country            
+        /app/ - GET - default endpoint
 
 client - contains ReactJS frontend package

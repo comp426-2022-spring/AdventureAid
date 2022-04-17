@@ -1,10 +1,10 @@
-import fetch from 'node-fetch'
-const BASE_URL = 'localhost:5000/app/'
+import axios from 'axios'
+const BASE_URL = 'http://localhost:5000/app/'
 
 class RequestService {
 
     // POST request to add log to DB
-    async addLog(remote_addr, remote_user, date, method, url, http_version, status, content_length, referrer_url, user_agent) {
+    addLog(remote_addr, remote_user, date, method, url, http_version, status, content_length, referrer_url, user_agent) {
         
         const body = {
             "remote_addr": remote_addr, 
@@ -19,29 +19,27 @@ class RequestService {
             "user_agent": user_agent
         }
 
-        const request = await fetch(BASE_URL + 'logs/add/', {
-            method: 'post',
-            body: JSON.stringify(body),
-            headers: {'Content-Type': 'application/json'}
-        });
+        axios.post(BASE_URL + 'logs/add/', body)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     // GET request to find user based on username
-    async getUser(username) {
-        const response = await fetch(BASE_URL + 'users/' + username + '/')
-        const data = await response.json()
-        return data
+    getUser(username) {
+        return axios.get(BASE_URL + 'users/' + username + '/')
     }
-
+    
     // GET request that returns array of JSON data for countries that match user's languages and vaccinations
-    async getUserCountries(username) {
-        const response = await fetch(BASE_URL + 'getUserCountries/' + username + '/')
-        const data = await response.json()
-        return data
+    getUserCountries(username) {
+        return axios.get(BASE_URL + 'getUserCountries/' + username + '/')
     }
 
     // POST request to add user to the DB
-    async addUser(username, name, hasMalaria, hasHepatitisA, hasHepatitisB, hasYellowFever, hasTyfoid, hasDTP, hasCholera, languages) {
+    addUser(username, name, hasMalaria, hasHepatitisA, hasHepatitisB, hasYellowFever, hasTyfoid, hasDTP, hasCholera, languages) {
         const body = {
             "username": username,
             "name": name,
@@ -55,15 +53,17 @@ class RequestService {
             "languages": languages
         }
 
-        const request = await fetch(BASE_URL + 'users/add/', {
-            method: 'post',
-            body: JSON.stringify(body),
-            headers: {'Content-Type': 'application/json'}
-        });
+        axios.post(BASE_URL + 'users/add/', body)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     // POST request to update user based on username
-    async updateUser(username, name, hasMalaria, hasHepatitisA, hasHepatitisB, hasYellowFever, hasTyfoid, hasDTP, hasCholera, languages) {
+    updateUser(username, name, hasMalaria, hasHepatitisA, hasHepatitisB, hasYellowFever, hasTyfoid, hasDTP, hasCholera, languages) {
         const body = {
             "username": username,
             "name": name,
@@ -77,42 +77,44 @@ class RequestService {
             "languages": languages
         }
 
-        const request = await fetch(BASE_URL + 'users/update/' + username + '/', {
-            method: 'post',
-            body: JSON.stringify(body),
-            headers: {'Content-Type': 'application/json'}
-        });
+        axios.post(BASE_URL + 'update/' + username + '/', body)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     // DELETE request to delete user
-    async deleteUser(username) {
-        const request = await fetch(BASE_URL + username + '/', {method: 'DELETE'})
+    deleteUser(username) {
+        axios.delete(BASE_URL + username + '/')
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
 
     // GET request to get array of country names
-    async getCountries() {
-        const response = await fetch(BASE_URL + 'getCountries/')
-        const data = await response.json()
-        return data
+    getCountries() {
+        return axios.get(BASE_URL + 'getCountries/')
     }
 
     // GET request to get a specific country JSON data
-    async getCountryData(country) {
-        const response = await fetch(BASE_URL + 'getCountry/' + country + '/')
-        const data = await response.json()
-        return data
+    getCountryData(country) {
+        return axios.get(BASE_URL + 'getCountry/' + country + '/')
     }
 
     // GET request to get array of all country JSON data
-    async getAllCountriesData() {
-        const response = await fetch(BASE_URL + '/getAllCountriesData/')
-        const data = await response.json()
-        return data
+    getAllCountriesData() {
+        return axios.get(BASE_URL + 'getAllCountriesData/')
     }
-}
 
+}
 export default new RequestService()
 
-// To use in other files do Request.(desired method) after importing this file
-// ex:  import Request from '../services/Request.js'
-//      Request.getCountryData("USA")
+// To use in other files do RequestService.(desired method) after importing this file
+// ex:  import RequestService from '../services/RequestService.js'
+//      RequestService.getCountryData("USA")

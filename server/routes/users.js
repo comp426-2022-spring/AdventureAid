@@ -15,7 +15,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 
 // This section will help you get a list of all the users.
-usersRoutes.route("/users").get(function (req, res) {
+usersRoutes.route("/app/users").get(function (req, res) {
   let db_connect = dbo.getDb("AdventureAid");
   db_connect
     .collection("users")
@@ -27,7 +27,7 @@ usersRoutes.route("/users").get(function (req, res) {
 });
 
 // This section will help you get a single user by id
-usersRoutes.route("/users/:id").get(function (req, res) {
+usersRoutes.route("/app/users/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: req.params.id};
   db_connect
@@ -39,7 +39,7 @@ usersRoutes.route("/users/:id").get(function (req, res) {
 });
 
 // This section will help you create a new user.
-usersRoutes.route("/users/add").post(function (req, response) {
+usersRoutes.route("/app/users/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   //creates a newUser document using the User model
   let newUser = new User({
@@ -63,7 +63,7 @@ usersRoutes.route("/users/add").post(function (req, response) {
 });
 
 // This section will help you update a user by id.
-usersRoutes.route("/update/:id").post(function (req, response) {
+usersRoutes.route("/app/update/:id").post(function (req, response) {
   let db_connect = dbo.getDb();  
   let myquery = { _id: req.params.id};  
   let newUser = new User({
@@ -88,7 +88,7 @@ usersRoutes.route("/update/:id").post(function (req, response) {
 });
 
 // This section will help you delete a user
-usersRoutes.route("/:id").delete((req, response) => {
+usersRoutes.route("/app/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: req.params.id};
   db_connect.collection("users").deleteOne(myquery, function (err, obj) {

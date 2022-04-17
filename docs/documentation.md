@@ -1,9 +1,10 @@
 # Project Structure
 server - contains Express server and requests to travelbriefing API
-    db
-        conn.js - used to connect to MongoDB 
-
-    routes
+    db - contains database connection files
+        conn.js - used to connect server to MongoDB database
+        
+    routes - contains endpoints directed to the users and logs databases
+    
         logs.js - endpoints to add new log documents
             /app/logs/ - GET - gets all of the logs in the database
             /app/logs/:id/ - GET - looks up log by id

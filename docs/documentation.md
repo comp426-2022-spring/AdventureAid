@@ -57,6 +57,7 @@ server - contains Express server and requests to travelbriefing API
     travelbriefingRequests.mjs - ES6 file contains functions that reqeust information from the travelbreifing.org API
 
 client - contains ReactJS frontend package
+
     src
         components - stores component related react code
             TestButton.jsx - temporary component used to test connecting to all of the server endpoints 

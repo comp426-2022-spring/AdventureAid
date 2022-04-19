@@ -53,6 +53,8 @@ server - contains Express server and requests to travelbriefing API
         /app/getCountry/:country/ - GET - gets JSON data for a specific country
         /app/getAllCountriesData/ - GET - gets JSON array that contains JSON data for every country            
         /app/ - GET - default endpoint
+        
+    travelbriefingRequests.mjs - ES6 file contains functions that reqeust information from the travelbreifing.org API
 
 client - contains ReactJS frontend package
     src

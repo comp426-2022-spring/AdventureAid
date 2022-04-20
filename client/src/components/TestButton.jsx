@@ -10,7 +10,7 @@ function TestButton() {
     }, []);
 
     function buttonHandler() {
-        RequestService.deleteUser("rj_da_goat_davis")
+        RequestService.addUser("stephen")
     }
     if (typeof test === 'undefined') {
         return (
@@ -23,7 +23,14 @@ function TestButton() {
     return ( 
         <div>
             <button onClick={buttonHandler}>Test</button>
-            <p>{JSON.stringify(test)}</p>
+            <p>{
+                            test.map(
+                                t => 
+                                <li key = {t.names.name}>
+                                        <b>{t.names.name}</b>
+                                </li>
+                            )
+                        }</p>
         </div>
     );
     

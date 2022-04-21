@@ -8,10 +8,11 @@
   const port = process.env.PORT || 5000;
   app.use(cors());
   app.use(express.json());
-  app.use(require("./routes/users"));
   app.use(require("./routes/logs"))
+  app.use(require("./routes/users"));
   // get driver connection
   const dbo = require("./db/conn");
+
 
   // Endpoint that gets all countries available to the travelbriefing API in a JSON array
   app.get('/app/getCountries/', async (req, res) => {

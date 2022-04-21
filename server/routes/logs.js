@@ -8,7 +8,6 @@ const logsRoutes = express.Router();
 
 // This will help us connect to the database
 const dbo = require("../db/conn");
-const { db } = require("../schemas/log-schema");
 
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
@@ -39,25 +38,39 @@ logsRoutes.route("/app/logs/:id/").get(function (req, res) {
 });
 
 // This section will help you create a new log.
-logsRoutes.route("/app/logs/add/").post(function (req, response) {
+logsRoutes.all('/app/*', function (req, res, next) {
+  //   console.log({  
+  //   remote_addr: req.ip,
+  //   remote_user: req.hostname,
+  //   date: new Date(Date.now()),
+  //   method: req.method,
+  //   url: req.url,
+  //   protocol: req.protocol,
+  //   http_version: req.httpVersion,
+  //   status: res.statusCode,
+  //   content_length: res.headers,
+  //   referrer_url: req.referrer,
+  //   user_agent: req.get('user-agent')
+  // })
   let db_connect = dbo.getDb();
   //creates a newUser document using the Log model
   let newLog = new Log({  
-    remote_addr: req.body.remote_addr, 
-    remote_user: req.body.remote_user, 
-    date: req.body.date,
-    method: req.body.method, 
-    url: req.body.url, 
-    http_version: req.body.http_version, 
-    status: req.body.status, 
-    content_length: req.body.content_length,
-    referrer_url: req.body.referrer_url,            
-    user_agent: req.body.user_agent
+    remote_addr: req.ip,
+    remote_user: req.user,
+    date: new Date(Date.now()),
+    method: req.method,
+    url: req.url,
+    protocol: req.protocol,
+    http_version: req.httpVersion,
+    status: res.statusCode,
+    content_length: res.getHeader('content-length'),
+    referrer_url: req.get('Referrer'),
+    user_agent: req.get('user-agent')
   });
   db_connect.collection("logs").insertOne(newLog, function (err, res) {
     if (err) throw err;
-    response.json(res);
   });
+  next()
 });
 
 

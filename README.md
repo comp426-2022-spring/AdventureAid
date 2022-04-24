@@ -4,7 +4,7 @@
 1. clone repository
 2. npm install (may need to be done in both server and client)
 3. navigate to server folder and type "node server.js" in terminal
-4. navigate to client and type "npm start" in terminal
+4. navigate to client and type "npm start" in a different terminal
 5. go to https://localhost:3000/
 ## UPDATE
 

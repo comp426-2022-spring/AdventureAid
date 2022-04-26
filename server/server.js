@@ -1,6 +1,9 @@
 // Async function wrapper to allow for imports
 (async function() {
   let { includeLanguages, includeVaccinations, getCountries, getCountryData, createCountriesData } = await import("./travelbriefingRequests.mjs")
+  const minimist = require("minimist")
+  const args = minimist(process.argv.slice(2));
+  args['test']
   const express = require("express");
   const app = express();
   const cors = require("cors");
@@ -12,7 +15,6 @@
   app.use(require("./routes/users"));
   // get driver connection
   const dbo = require("./db/conn");
-
 
   // Endpoint that gets all countries available to the travelbriefing API in a JSON array
   app.get('/app/getCountries/', async (req, res) => {
@@ -51,11 +53,11 @@
       res.end(res.statusCode+ ' ' +res.statusMessage)
     });
 
-  app.listen(port, () => {
+  const server = app.listen(port, () => {
     // perform a database connection when server starts
     dbo.connectToServer(function (err) {
       if (err) console.error(err);
-  
+      if (args.test) process.exit(0)
     });
     console.log(`Server is running on port: ${port}`);
   });

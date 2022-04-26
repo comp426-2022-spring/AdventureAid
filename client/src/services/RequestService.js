@@ -2,32 +2,6 @@ import axios from 'axios'
 const BASE_URL = 'http://localhost:5000/app/'
 
 class RequestService {
-
-    // POST request to add log to DB
-    addLog(remote_addr, remote_user, date, method, url, http_version, status, content_length, referrer_url, user_agent) {
-        
-        const body = {
-            "remote_addr": remote_addr, 
-            "remote_user": remote_user, 
-            "date": date,
-            "method": method, 
-            "url": url, 
-            "http_version": http_version, 
-            "status": status, 
-            "content_length": content_length,
-            "referrer_url": referrer_url,            
-            "user_agent": user_agent
-        }
-
-        axios.post(BASE_URL + 'logs/add/', body)
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    }
-
     // GET request to find user based on username
     getUser(username) {
         return axios.get(BASE_URL + 'users/' + username + '/')

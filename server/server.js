@@ -13,7 +13,6 @@
   // get driver connection
   const dbo = require("./db/conn");
 
-
   // Endpoint that gets all countries available to the travelbriefing API in a JSON array
   app.get('/app/getCountries/', async (req, res) => {
     // Respond with status 200
@@ -51,11 +50,11 @@
       res.end(res.statusCode+ ' ' +res.statusMessage)
     });
 
-  app.listen(port, () => {
+  const server = app.listen(port, () => {
     // perform a database connection when server starts
     dbo.connectToServer(function (err) {
       if (err) console.error(err);
-  
+
     });
     console.log(`Server is running on port: ${port}`);
   });

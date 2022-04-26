@@ -1,6 +1,9 @@
 // Async function wrapper to allow for imports
 (async function() {
   let { includeLanguages, includeVaccinations, getCountries, getCountryData, createCountriesData } = await import("./travelbriefingRequests.mjs")
+  const minimist = require("minimist")
+  const args = minimist(process.argv.slice(2));
+  args['test']
   const express = require("express");
   const app = express();
   const cors = require("cors");
@@ -54,7 +57,7 @@
     // perform a database connection when server starts
     dbo.connectToServer(function (err) {
       if (err) console.error(err);
-
+      if (args.test) process.exit(0)
     });
     console.log(`Server is running on port: ${port}`);
   });

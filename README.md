@@ -1,11 +1,13 @@
 # a99 Final Project
 
 ## Setup
+```
 1. clone repository
 2. npm install
 3. npm run server
 4. npm run client
 5. go to https://localhost:3000/
+``````
 ## UPDATE
 
 You don't need to accept this assignment since you are already assigned to teams. So, there is not assignment invite link for a99.

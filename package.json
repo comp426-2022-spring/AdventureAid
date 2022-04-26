@@ -1,0 +1,26 @@
+{
+  "name": "a99-hamal",
+  "version": "1.0.0",
+  "description": "You don't need to accept this assignment since you are already assigned to teams. So, there is not assignment invite link for a99.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Testing:\" && (cd client && npm test) && exit 1",
+    "install": "(cd client && npm install) && (cd .. && cd server && npm install)",
+    "client":"cd client && npm start",
+    "server":"cd server && npm start"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2022-spring/a99-hamal.git"
+  },
+  "author": "hamal",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/comp426-2022-spring/a99-hamal/issues"
+  },
+  "homepage": "https://github.com/comp426-2022-spring/a99-hamal#readme"
+}

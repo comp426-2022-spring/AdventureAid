@@ -86,30 +86,37 @@ const ObjectId = require("mongodb").ObjectId;
   });
 
   // This section will help you update a user by id.
-  usersRoutes.route("/app/update/").post(function (req, response) {
+  usersRoutes.route("/app/update/").post( async function (req, response) {
     let db_connect = dbo.getDb();  
-    let myquery = { _id: req.body.username};  
-    let newUser = new User({
-      _id: req.body.username,
-      name: req.body.name,
-      password: req.body.password,
-      email: req.body.email,
-      vaccinations: { 
-      malaria: req.body.malaria,
-      hepatitisA: req.body.hepatitisA,
-      hepatitisB: req.body.hepatitisB,
-      yellowFever: req.body.yellowFever,
-      tyfoid: req.body.tyfoid,
-      dtp: req.body.dtp,
-      cholera: req.body.cholera
-      },
-    languages: req.body.languages
-    });
-    db_connect.collection("users").updateOne(myquery, newUser, function ( err, obj) {
-      if (err) throw err;
-      console.log("1 document updated");
-      response.json(obj);
-    })
+    const user = await db_connect.collection("users").findOne({"_id": req.body.username})
+    const sameEmail = user.email == req.body.email
+    const takenEmail = await db_connect.collection("users").findOne({"email": req.body.email})
+    if (!sameEmail && takenEmail) {
+      response.json({"message":"Email already taken"})
+    } else {
+      let myquery = { _id: req.body.username};  
+      let newUser = new User({
+        _id: req.body.username,
+        name: req.body.name,
+        password: req.body.password,
+        email: req.body.email,
+        vaccinations: { 
+        malaria: req.body.malaria,
+        hepatitisA: req.body.hepatitisA,
+        hepatitisB: req.body.hepatitisB,
+        yellowFever: req.body.yellowFever,
+        tyfoid: req.body.tyfoid,
+        dtp: req.body.dtp,
+        cholera: req.body.cholera
+        },
+      languages: req.body.languages
+      });
+      db_connect.collection("users").updateOne(myquery, newUser, function ( err, obj) {
+        if (err) throw err;
+        console.log("1 document updated");
+        response.json(obj);
+      })
+    }
   });
 
   // This section will help you delete a user

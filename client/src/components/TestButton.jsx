@@ -10,7 +10,7 @@ function TestButton() {
     }, []);
 
     function buttonHandler() {
-        RequestService.addUser("user4", "User Name", "password123", "email1@email.com")
+        RequestService.updateUser("user4", "User Name", "password123", "email@email.com", true, true, false, false, false, false, false, ["English"])
     }
     if (typeof test === 'undefined') {
         return (

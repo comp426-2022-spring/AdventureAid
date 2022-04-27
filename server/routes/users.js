@@ -55,27 +55,34 @@ const ObjectId = require("mongodb").ObjectId;
   })
 
   // This section will help you create a new user.
-  usersRoutes.route("/app/users/add/").post(function (req, response) {
+  usersRoutes.route("/app/users/add/").post(async function (req, response) {
     let db_connect = dbo.getDb();
-    //creates a newUser document using the User model
-    let newUser = new User({
-        _id: req.body.username,
-        name: req.body.name,
-        password: req.body.password,
-        email: req.body.email,
-    });
-    db_connect.collection("users").insertOne(newUser, function (err, res) {
-      if (err) {
-        if (err.name === 'MongoServerError' && err.code === 11000) {
-          // Duplicate username
-          return response.status(422).send({ succes: false, message: 'User already exist!' });
+    const user = req.body
+    const takenUsername = await db_connect.collection("users").findOne({"_id": user.username})
+    const takenEmail = await db_connect.collection("users").findOne({"email": user.email})
+    if (takenUsername || takenEmail) {
+      response.json({"message":"Username or email already taken"})
+    } else {
+      //creates a newUser document using the User model
+      let newUser = new User({
+          _id: req.body.username,
+          name: req.body.name,
+          password: req.body.password,
+          email: req.body.email,
+      });
+      db_connect.collection("users").insertOne(newUser, function (err, res) {
+        if (err) {
+          if (err.name === 'MongoServerError' && err.code === 11000) {
+            // Duplicate username
+            return response.status(422).send({ succes: false, message: 'User already exist!' });
+          }
+    
+          // Some other error
+          return response.status(422).send(err);
         }
-  
-        // Some other error
-        return response.status(422).send(err);
-      }
-      response.json(res);
-    });
+        response.json(res);
+      });
+    }
   });
 
   // This section will help you update a user by id.

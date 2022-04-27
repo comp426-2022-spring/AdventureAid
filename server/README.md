@@ -196,7 +196,7 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
-curl -X POST -H 'Content-Type: application/json' -d '{"username": "user", "name": "name", "malaria": true, "hepatitisA": true, "hepatitisB": true, "yellowFever": true, "tyfoid": true, "dtp": true, "cholera": true, "languages": ["English", "Spanish"]}' http://localhost:5000/app/users/add/
+curl -X POST -H 'Content-Type: application/json' -d '{"username": "user", "name": "name", "password":"password123", "email":"email@email.com"}' http://localhost:5000/app/users/add/
 ```
 
 #### Response body
@@ -218,7 +218,7 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 ```
 
-### /app/update/:id/ (POST)
+### /app/update/ (POST)
 
 #### Request cURL
 

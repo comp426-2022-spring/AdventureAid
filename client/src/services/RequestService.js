@@ -13,18 +13,12 @@ class RequestService {
     }
 
     // POST request to add user to the DB
-    addUser(username, name, hasMalaria, hasHepatitisA, hasHepatitisB, hasYellowFever, hasTyfoid, hasDTP, hasCholera, languages) {
+    addUser(username, name, password, email) {
         const body = {
             "username": username,
             "name": name,
-            "malaria": hasMalaria,
-            "hepatitisA": hasHepatitisA,
-            "hepatitisB": hasHepatitisB,
-            "yellowFever": hasYellowFever,
-            "tyfoid": hasTyfoid,
-            "dtp": hasDTP,
-            "cholera": hasCholera,
-            "languages": languages
+            "password": password,
+            "email": email
         }
 
         axios.post(BASE_URL + 'users/add/', body)
@@ -37,10 +31,12 @@ class RequestService {
     }
 
     // POST request to update user based on username
-    updateUser(username, name, hasMalaria, hasHepatitisA, hasHepatitisB, hasYellowFever, hasTyfoid, hasDTP, hasCholera, languages) {
+    updateUser(username, name, password, email, hasMalaria, hasHepatitisA, hasHepatitisB, hasYellowFever, hasTyfoid, hasDTP, hasCholera, languages) {
         const body = {
             "username": username,
             "name": name,
+            "password": password,
+            "email": email,
             "malaria": hasMalaria,
             "hepatitisA": hasHepatitisA,
             "hepatitisB": hasHepatitisB,
@@ -51,7 +47,7 @@ class RequestService {
             "languages": languages
         }
 
-        axios.post(BASE_URL + 'update/' + username + '/', body)
+        axios.post(BASE_URL + 'update/', body)
           .then(function (response) {
             console.log(response);
           })

@@ -61,30 +61,32 @@ const ObjectId = require("mongodb").ObjectId;
     let newUser = new User({
         _id: req.body.username,
         name: req.body.name,
-        vaccinations: { 
-        malaria: req.body.malaria,
-        hepatitisA: req.body.hepatitisA,
-        hepatitisB: req.body.hepatitisB,
-        yellowFever: req.body.yellowFever,
-        tyfoid: req.body.tyfoid,
-        dtp: req.body.dtp,
-        cholera: req.body.cholera
-      },
-      languages: req.body.languages
+        password: req.body.password,
+        email: req.body.email,
     });
     db_connect.collection("users").insertOne(newUser, function (err, res) {
-      if (err) throw err;
+      if (err) {
+        if (err.name === 'MongoServerError' && err.code === 11000) {
+          // Duplicate username
+          return response.status(422).send({ succes: false, message: 'User already exist!' });
+        }
+  
+        // Some other error
+        return response.status(422).send(err);
+      }
       response.json(res);
     });
   });
 
   // This section will help you update a user by id.
-  usersRoutes.route("/app/update/:id/").post(function (req, response) {
+  usersRoutes.route("/app/update/").post(function (req, response) {
     let db_connect = dbo.getDb();  
-    let myquery = { _id: req.params.id};  
+    let myquery = { _id: req.body.username};  
     let newUser = new User({
       _id: req.body.username,
       name: req.body.name,
+      password: req.body.password,
+      email: req.body.email,
       vaccinations: { 
       malaria: req.body.malaria,
       hepatitisA: req.body.hepatitisA,
@@ -113,4 +115,5 @@ const ObjectId = require("mongodb").ObjectId;
       response.json(obj);
     });
   });
-})();module.exports = usersRoutes;
+})();
+module.exports = usersRoutes;

@@ -10,7 +10,8 @@ function TestButton() {
     }, []);
 
     function buttonHandler() {
-        RequestService.updateUser("user4", "User Name", "password123", "email@email.com", true, true, false, false, false, false, false, ["English"])
+        RequestService.login("user4", "password123")
+        //RequestService.updateUser("user4", "User Name", "password123", "email@email.com", true, true, false, false, false, false, false, ["English"])
     }
     if (typeof test === 'undefined') {
         return (

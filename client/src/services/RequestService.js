@@ -82,6 +82,20 @@ class RequestService {
         return axios.get(BASE_URL + 'getAllCountriesData/')
     }
 
+    login(username, password) {
+      const body = {
+        "username": username,
+        "password": password
+      }
+      axios.post(BASE_URL + 'login/', body)
+        .then(function (response) {
+        console.log(response);
+        })
+        .catch(function (error) {
+        console.log(error);
+      });
+    }
+
 }
 export default new RequestService()
 

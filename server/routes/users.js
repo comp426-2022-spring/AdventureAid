@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require('../schemas/user-schema'); 
+const jwt = require('jsonwebtoken')
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /users.
@@ -129,5 +130,37 @@ const ObjectId = require("mongodb").ObjectId;
       response.json(obj);
     });
   });
+
+  // login
+  usersRoutes.route("/app/login/").post((req, res) => {
+    let db_connect = dbo.getDb();
+    db_connect.collection("users").findOne({"_id":req.body.username}).then(dbUser => {
+      if (!dbUser) {
+        return res.json({"message":"Invalid username or Password"})
+      }
+      if (req.body.password == dbUser.password) {
+        const payload = {
+          id: dbUser._id
+        }
+        jwt.sign(
+          payload,
+          "secret",
+          {expiresIn: 86400},
+          (err, token) => {
+            if (err) {
+              console.log(err)
+              return res.json({"message":"err"})
+            }
+            return res.json({
+              message: "success",
+              token: "Bearer " + token
+            })
+          }
+        )
+      } else {
+          return res.json({"message":"Invalid username or Password"})
+        }
+    })
+  })
 })();
 module.exports = usersRoutes;

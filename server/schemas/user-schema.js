@@ -1,9 +1,23 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 var userSchema = new mongoose.Schema({
-    _id:   {    type:String,
-                lowercase:true},
-    name:  String,
+    _id:   {    
+        type:String,
+        lowercase:true,
+        required:true
+    },
+    name:  {    
+        type:String,
+        required:true
+    },
+    email: {    
+        type:String,
+        required:true
+    },
+    password: {    
+        type:String,
+        required:true
+    },
     vaccinations:{  malaria: {type:Boolean, default:false},
                     hepatitisA:{type:Boolean, default:false},
                     hepatitisB:{type:Boolean, default:false},
@@ -12,10 +26,13 @@ var userSchema = new mongoose.Schema({
                     dtp:{type:Boolean, default:false},
                     cholera:{type:Boolean, default:false}
     },
-    languages:[String]
+    languages: {
+        type:[String],
+        default:[]
+    }
 });
 
 module.exports = mongoose.model(
-     'user', userSchema, 'Users' );
+     'user', userSchema, 'users' );
 
 

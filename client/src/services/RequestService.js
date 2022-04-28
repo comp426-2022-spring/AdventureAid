@@ -13,34 +13,24 @@ class RequestService {
     }
 
     // POST request to add user to the DB
-    addUser(username, name, hasMalaria, hasHepatitisA, hasHepatitisB, hasYellowFever, hasTyfoid, hasDTP, hasCholera, languages) {
+    async addUser(username, name, password, email) {
         const body = {
             "username": username,
             "name": name,
-            "malaria": hasMalaria,
-            "hepatitisA": hasHepatitisA,
-            "hepatitisB": hasHepatitisB,
-            "yellowFever": hasYellowFever,
-            "tyfoid": hasTyfoid,
-            "dtp": hasDTP,
-            "cholera": hasCholera,
-            "languages": languages
+            "password": password,
+            "email": email
         }
 
-        axios.post(BASE_URL + 'users/add/', body)
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        return axios.post(BASE_URL + 'users/add/', body)
     }
 
     // POST request to update user based on username
-    updateUser(username, name, hasMalaria, hasHepatitisA, hasHepatitisB, hasYellowFever, hasTyfoid, hasDTP, hasCholera, languages) {
+    updateUser(username, name, password, email, hasMalaria, hasHepatitisA, hasHepatitisB, hasYellowFever, hasTyfoid, hasDTP, hasCholera, languages) {
         const body = {
             "username": username,
             "name": name,
+            "password": password,
+            "email": email,
             "malaria": hasMalaria,
             "hepatitisA": hasHepatitisA,
             "hepatitisB": hasHepatitisB,
@@ -51,7 +41,7 @@ class RequestService {
             "languages": languages
         }
 
-        axios.post(BASE_URL + 'update/' + username + '/', body)
+        axios.post(BASE_URL + 'update/', body)
           .then(function (response) {
             console.log(response);
           })
@@ -84,6 +74,36 @@ class RequestService {
     // GET request to get array of all country JSON data
     getAllCountriesData() {
         return axios.get(BASE_URL + 'getAllCountriesData/')
+    }
+
+    async login(username, password) {
+      const body = {
+        "username": username,
+        "password": password
+      }
+      const res = axios.post(BASE_URL + 'login/', body)
+      res.then((res) => {
+          console.log(res)
+          localStorage.setItem("token", res.data.token)
+        })
+        .catch(function (error) {
+        console.log(error);
+      });
+      return res
+    }
+
+    logout() {
+      localStorage.removeItem("token")
+    }
+
+    getUsername() {
+      const headers= { headers: 
+        {
+        "Content-type": "application/json",
+        "x-access-token": localStorage.getItem("token")
+        }
+      }
+      return axios.get(BASE_URL + 'getUsername/', headers)
     }
 
 }

@@ -1,6 +1,10 @@
 # a99-hamal API Documentation
 
 ## Endpoints
+*if user is not logged in then the result for all endpoints will be:*
+```
+{"message":"Incorrect Token Given","isLoggedIn":false}
+```
 
 ### /app/ (GET)
 
@@ -19,14 +23,15 @@ curl http://localhost:5000/app/
 #### Response headers
 
 ```
+GET /app/ HTTP/1.1
 HTTP/1.1 200 OK
 X-Powered-By: Express
-Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Access-Control-Allow-Origin: *
+Content-Type: text/plain
+Date: Thu, 28 Apr 2022 04:02:49 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
+Transfer-Encoding: chunked
 ```
 
 ### /app/getCountries (GET)
@@ -48,10 +53,11 @@ curl http://localhost:5000/app/getCountries
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Content-Length: 3200
+ETag: W/"c80-wmXWyvLP12utMdnQN/5A9k73rlM"
+Date: Thu, 28 Apr 2022 04:05:57 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
@@ -75,10 +81,11 @@ curl http://localhost:5000/app/getCountry/usa/
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Content-Length: 9679
+ETag: W/"25cf-1VVryqQGm8sHH7aiHIjtSHlHVfo"
+Date: Thu, 28 Apr 2022 04:06:34 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
@@ -102,10 +109,11 @@ curl http://localhost:5000/app/getAllCountriesData/
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Content-Length: 2558063
+ETag: W/"27086f-rC1lvgPs28nY3doihEMc9v56aPE"
+Date: Thu, 28 Apr 2022 04:09:03 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
@@ -121,7 +129,7 @@ curl http://localhost:5000/app/users/
 #### Response body
 
 ```
-[{"_id":"stephen","name":"FirstName LastName","vaccinations":{"malaria":true,"hepatitisA":false,"hepatitisB":true,"yellowFever":true,"tyfoid":false,"dtp":true,"cholera":true},"languages":["English","French","Spanish"]},{"_id":"stephrb","name":"stephen buck","vaccinations":{"malaria":true,"hepatitisA":false,"hepatitisB":true,"yellowFever":true,"tyfoid":false,"dtp":false,"cholera":false},"languages":["English"]},{"_id":"testuser","name":"test user","vaccinations":{"malaria":true,"hepatitisA":false,"hepatitisB":true,"yellowFever":true,"tyfoid":false,"dtp":false,"cholera":false},"languages":["English"]}]
+[{"_id":"user3","name":"User Name","email":"email@email.com","password":"password123","vaccinations":{"malaria":false,"hepatitisA":false,"hepatitisB":false,"yellowFever":false,"tyfoid":false,"dtp":false,"cholera":false},"languages":[]},{"_id":"user4","name":"User Name","email":"email1@email.com","password":"password123","vaccinations":{"malaria":true,"hepatitisA":true,"hepatitisB":false,"yellowFever":false,"tyfoid":false,"dtp":false,"cholera":false},"languages":["English"]}]
 ```
 
 #### Response headers
@@ -129,10 +137,11 @@ curl http://localhost:5000/app/users/
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Content-Length: 994
+ETag: W/"3e2-RJmD3j7B10YSE+DRz0PLQt9R/IM"
+Date: Thu, 28 Apr 2022 04:09:55 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
@@ -142,13 +151,13 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
-curl http://localhost:5000/app/users/testuser/
+curl http://localhost:5000/app/users/user3/
 ```
 
 #### Response body
 
 ```
-{"_id":"testuser","name":"test user","vaccinations":{"malaria":true,"hepatitisA":false,"hepatitisB":true,"yellowFever":true,"tyfoid":false,"dtp":false,"cholera":false},"languages":["English"]}
+{"_id":"user3","name":"User Name","email":"email@email.com","password":"password123","vaccinations":{"malaria":false,"hepatitisA":false,"hepatitisB":false,"yellowFever":false,"tyfoid":false,"dtp":false,"cholera":false},"languages":[]}
 ```
 
 #### Response headers
@@ -156,10 +165,11 @@ curl http://localhost:5000/app/users/testuser/
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Content-Length: 234
+ETag: W/"ea-2XudjtrBAh/NrQ69gFpuaokOlxQ"
+Date: Thu, 28 Apr 2022 04:12:21 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
@@ -183,10 +193,11 @@ curl http://localhost:5000/app/getUserCountries/testUser/
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Content-Length: 133921
+ETag: W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"
+Date: Thu, 28 Apr 2022 04:13:29 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
@@ -196,11 +207,14 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
-curl -X POST -H 'Content-Type: application/json' -d '{"username": "user", "name": "name", "malaria": true, "hepatitisA": true, "hepatitisB": true, "yellowFever": true, "tyfoid": true, "dtp": true, "cholera": true, "languages": ["English", "Spanish"]}' http://localhost:5000/app/users/add/
+curl -X POST -H 'Content-Type: application/json' -d '{"username": "user", "name": "name", "password":"password123", "email":"email@email.com"}' http://localhost:5000/app/users/add/
 ```
 
 #### Response body
 
+```
+{"message":"Username or email already taken"}
+```
 ```
 {"acknowledged":true,"insertedId":"user"}
 ```
@@ -210,24 +224,28 @@ curl -X POST -H 'Content-Type: application/json' -d '{"username": "user", "name"
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 46
-ETag: W/"2e-U/q8iZ4JKqczXPIvtwiVRpEFlRc"
-Date: Thu, 07 Apr 2022 16:30:07 GMT
+Content-Length: 41
+ETag: W/"29-QHbEuKnvCor6EeXUchGRtTtxjPg"
+Date: Thu, 28 Apr 2022 04:16:32 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
 
-### /app/update/:id/ (POST)
+### /app/update/ (POST)
 
 #### Request cURL
 
 ```
-curl -X POST http://localhost:5000/app/update/same_user/ -H "Content-Type: application/json" -d "{\"username\": \"same_user\", \"new_name\": \"name\", \"malaria\": false, \"hepatitisA\": true, \"hepatitisB\": false, \"yellowFever\": true, \"tyfoid\": true, \"dtp\": true, \"cholera\": true, \"languages\": [\"English\", \"Spanish\", \"French\"]}"
+curl -X POST -H 'Content-Type: application/json' -d '{"username": "user", "name": "new_name", "password":"new_pass", "email":"new_email@email.com", "malaria":true, "hepatitisA":true, "hepatitisB":false, "yellowFever":true, "tyfoid":false, "dtp":true, "cholera":true, "languages":["Spanish"]}' http://localhost:5000/app/update/
 ```
 
 #### Response body
 
+```
+{"message":"Email already taken"}
+```
 ```
 {"acknowledged":true,"modifiedCount":1,"upsertedId":null,"upsertedCount":0,"matchedCount":1}
 ```
@@ -237,10 +255,11 @@ curl -X POST http://localhost:5000/app/update/same_user/ -H "Content-Type: appli
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 46
-ETag: W/"2e-U/q8iZ4JKqczXPIvtwiVRpEFlRc"
-Date: Thu, 07 Apr 2022 16:30:07 GMT
+Content-Length: 33
+ETag: W/"21-Kn4KmlA/JoCJaWrSi6SRyOmnmRk"
+Date: Thu, 28 Apr 2022 04:22:18 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
@@ -265,10 +284,11 @@ curl -X DELETE http://localhost:5000/app/user_to_delete/
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 401
-ETag: W/"191-zIX/D9vHmBhTLyWkUb1+6Em57CE"
-Date: Tue, 26 Apr 2022 02:18:49 GMT
+Content-Length: 38
+ETag: W/"26-fgR5yLHQ1Hpp6zDESHaY9wJreYE"
+Date: Thu, 28 Apr 2022 04:22:55 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
@@ -292,10 +312,11 @@ curl http://localhost:5000/app/logs/
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Content-Length: 101478
+ETag: W/"18c66-DYbGAOVUETaL88uZZf1L6aRkNtU"
+Date: Thu, 28 Apr 2022 04:23:29 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
@@ -319,20 +340,30 @@ curl http://localhost:5000/app/logs/6261c14927c947f8c0c1e451
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Content-Length: 301
+ETag: W/"12d-Bmnvg41DRbTYumYtmkStgVBWwd4"
+Date: Thu, 28 Apr 2022 04:24:14 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
 
 ### /app/* (POST)
 *Adds a log to the database for every endpoint starting with /app/*
+
+### /app/login/ (POST)
+
 #### Request cURL
 
 ```
-curl -X POST -H 'Content-Type: application/json' -d '{"_id":"6261c14927c947f8c0c1e451","remote_addr":"::1","date":"2022-04-21T20:40:41.672Z","method":"GET","url":"/app/","protocol":"http","http_version":"1.1","status":200,"user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"}' http://localhost:5000/app/
+curl -X POST -H 'Content-Type: application/json' -d '{"username": "user3", "password":"password123"}' http://localhost:5000/app/login/
+```
+
+#### Response body
+
+```
+{"message":"success","token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InVzZXIxIiwiaWF0IjoxNjUxMTE4NDE2LCJleHAiOjE2NTEyMDQ4MTZ9.O-1kGP-NN7MJKFQZws1h1kux7ToC9NfzcZF_DHHGneA"}
 ```
 
 #### Response headers
@@ -340,11 +371,41 @@ curl -X POST -H 'Content-Type: application/json' -d '{"_id":"6261c14927c947f8c0c
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
+Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 46
-ETag: W/"2e-U/q8iZ4JKqczXPIvtwiVRpEFlRc"
-Date: Thu, 07 Apr 2022 16:30:07 GMT
+Content-Length: 184
+ETag: W/"b8-mhyAaZ7/UR5P/Rip+wYNkDYeNKM"
+Date: Thu, 28 Apr 2022 04:26:04 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
+### /app/getUsername/ (GET)
 
+#### Request cURL
+
+```
+curl localhost:5000/app/getUsername/
+```
+
+#### Response body
+
+```
+{"message":"Incorrect Token Given","isLoggedIn":false}
+```
+```
+{"isLoggedIn":true,"username":"user"}
+```
+
+#### Response headers
+
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 54
+ETag: W/"36-UyGrAMR2liNC8sM3Chen3dVicRA"
+Date: Thu, 28 Apr 2022 04:38:00 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+```

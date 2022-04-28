@@ -30,7 +30,7 @@
         pathCheck ? next() : middleware(req, res, next)
       }
     }
-    app.use('/app/*', unless(verifyJWT, '/app/user/add', '/app/login', '/app/getUsername'))
+    app.use('/app/*', unless(verifyJWT, '/app/users/add', '/app/login', '/app/getUsername'))
   }
   else console.log("Dev options enabled: authentication is not required for endpoint access")
 

@@ -2,6 +2,7 @@
 (async function() {
   let { includeLanguages, includeVaccinations, getCountries, getCountryData, createCountriesData } = await import("./travelbriefingRequests.mjs")
   const minimist = require("minimist")
+  const verifyJWT = require("./middleware/jwtMiddleware.js")
   const args = minimist(process.argv.slice(2));
   args['test']
   const express = require("express");
@@ -45,6 +46,10 @@
       res.json(countries)
     });
     
+    app.get('/app/getUsername/', verifyJWT, (req, res) => {
+      res.json({isLoggedIn: true, username: req.user.id})
+    })
+
   app.get('/app/', (req, res) => {
     // Respond with status 200
       res.statusCode = 200;
@@ -52,6 +57,8 @@
       res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
       res.end(res.statusCode+ ' ' +res.statusMessage)
     });
+
+  
 
   const server = app.listen(port, () => {
     // perform a database connection when server starts
@@ -61,4 +68,5 @@
     });
     console.log(`Server is running on port: ${port}`);
   });
+  
 })();

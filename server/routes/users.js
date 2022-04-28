@@ -66,10 +66,20 @@ const ObjectId = require("mongodb").ObjectId;
     } else {
       //creates a newUser document using the User model
       let newUser = new User({
-          _id: req.body.username,
-          name: req.body.name,
-          password: req.body.password,
-          email: req.body.email,
+        _id: req.body.username,
+        name: req.body.name,
+        password: req.body.password,
+        email: req.body.email,
+        vaccinations: { 
+        malaria: req.body.malaria,
+        hepatitisA: req.body.hepatitisA,
+        hepatitisB: req.body.hepatitisB,
+        yellowFever: req.body.yellowFever,
+        tyfoid: req.body.tyfoid,
+        dtp: req.body.dtp,
+        cholera: req.body.cholera
+        },
+      languages: req.body.languages
       });
       db_connect.collection("users").insertOne(newUser, function (err, res) {
         if (err) {
@@ -144,7 +154,7 @@ const ObjectId = require("mongodb").ObjectId;
         }
         jwt.sign(
           payload,
-          "secret",
+          process.env.JWT_Key,
           {expiresIn: 86400},
           (err, token) => {
             if (err) {
@@ -162,5 +172,6 @@ const ObjectId = require("mongodb").ObjectId;
         }
     })
   })
+  
 })();
 module.exports = usersRoutes;

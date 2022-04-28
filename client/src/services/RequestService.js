@@ -90,10 +90,25 @@ class RequestService {
       axios.post(BASE_URL + 'login/', body)
         .then(function (response) {
         console.log(response);
+        localStorage.setItem("token", response.data.token)
         })
         .catch(function (error) {
         console.log(error);
       });
+    }
+
+    logout() {
+      localStorage.removeItem("token")
+    }
+
+    getUsername() {
+      const headers= { headers: 
+        {
+        "Content-type": "application/json",
+        "x-access-token": localStorage.getItem("token")
+        }
+      }
+      return axios.get(BASE_URL + 'getUsername/', headers)
     }
 
 }

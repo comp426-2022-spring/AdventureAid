@@ -1,6 +1,10 @@
 # a99-hamal API Documentation
 
 ## Endpoints
+*if user is not logged in then the result for all endpoints will be:*
+```
+{"message":"Incorrect Token Given","isLoggedIn":false}
+```
 
 ### /app/ (GET)
 
@@ -372,6 +376,36 @@ Content-Type: application/json; charset=utf-8
 Content-Length: 184
 ETag: W/"b8-mhyAaZ7/UR5P/Rip+wYNkDYeNKM"
 Date: Thu, 28 Apr 2022 04:26:04 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+```
+### /app/update/ (GET)
+
+#### Request cURL
+
+```
+curl localhost:5000/app/getUsername/
+```
+
+#### Response body
+
+```
+{"message":"Incorrect Token Given","isLoggedIn":false}
+```
+```
+{"isLoggedIn":true,"username":"user"}
+```
+
+#### Response headers
+
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 54
+ETag: W/"36-UyGrAMR2liNC8sM3Chen3dVicRA"
+Date: Thu, 28 Apr 2022 04:38:00 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```

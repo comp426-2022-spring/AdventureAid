@@ -14,7 +14,7 @@ function TestButton() {
     }, []);
 
     function buttonHandler() {
-        RequestService.logout()
+        RequestService.login("user3", "password123")
 
         //RequestService.updateUser("user4", "User Name", "password123", "email@email.com", true, true, false, false, false, false, false, ["English"])
     }

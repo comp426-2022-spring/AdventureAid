@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require('../schemas/user-schema'); 
 const jwt = require('jsonwebtoken')
+
 // recordRoutes is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /users.
@@ -41,6 +42,7 @@ const ObjectId = require("mongodb").ObjectId;
         });
   });
 
+  // gets all country JSON data for a given user
   usersRoutes.route("/app/getUserCountries/:id/").get(async function (req, res) {
     let db_connect = dbo.getDb();
     let myquery = { _id: req.params.id};
@@ -59,6 +61,7 @@ const ObjectId = require("mongodb").ObjectId;
   usersRoutes.route("/app/users/add/").post(async function (req, response) {
     let db_connect = dbo.getDb();
     const user = req.body
+    // if email or username is taken, will not allow to be inputted
     const takenUsername = await db_connect.collection("users").findOne({"_id": user.username})
     const takenEmail = await db_connect.collection("users").findOne({"email": user.email})
     if (takenUsername || takenEmail) {
@@ -85,7 +88,7 @@ const ObjectId = require("mongodb").ObjectId;
         if (err) {
           if (err.name === 'MongoServerError' && err.code === 11000) {
             // Duplicate username
-            return response.status(422).send({ succes: false, message: 'User already exist!' });
+            return response.status(422).send({ success: false, message: 'User already exist!' });
           }
     
           // Some other error
@@ -100,6 +103,7 @@ const ObjectId = require("mongodb").ObjectId;
   usersRoutes.route("/app/update/").post( async function (req, response) {
     let db_connect = dbo.getDb();  
     const user = await db_connect.collection("users").findOne({"_id": req.body.username})
+    // only updates user if the email is the same or not held by another user
     const sameEmail = user.email == req.body.email
     const takenEmail = await db_connect.collection("users").findOne({"email": req.body.email})
     if (!sameEmail && takenEmail) {

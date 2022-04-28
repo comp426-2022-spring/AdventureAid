@@ -13,7 +13,7 @@ class RequestService {
     }
 
     // POST request to add user to the DB
-    addUser(username, name, password, email) {
+    async addUser(username, name, password, email) {
         const body = {
             "username": username,
             "name": name,
@@ -21,13 +21,7 @@ class RequestService {
             "email": email
         }
 
-        axios.post(BASE_URL + 'users/add/', body)
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        return axios.post(BASE_URL + 'users/add/', body)
     }
 
     // POST request to update user based on username
@@ -82,19 +76,20 @@ class RequestService {
         return axios.get(BASE_URL + 'getAllCountriesData/')
     }
 
-    login(username, password) {
+    async login(username, password) {
       const body = {
         "username": username,
         "password": password
       }
-      axios.post(BASE_URL + 'login/', body)
-        .then(function (response) {
-        console.log(response);
-        localStorage.setItem("token", response.data.token)
+      const res = axios.post(BASE_URL + 'login/', body)
+      res.then((res) => {
+          console.log(res)
+          localStorage.setItem("token", res.data.token)
         })
         .catch(function (error) {
         console.log(error);
       });
+      return res
     }
 
     logout() {

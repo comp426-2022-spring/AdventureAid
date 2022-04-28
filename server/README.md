@@ -379,7 +379,7 @@ Date: Thu, 28 Apr 2022 04:26:04 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
 ```
-### /app/update/ (GET)
+### /app/getUsername/ (GET)
 
 #### Request cURL
 

@@ -23,9 +23,17 @@
   app.use(express.json());
 
   // dev is false by default, meaning login is required to access all endpoints starting with /app/
-  if (!args.dev) app.use('/app/*', verifyJWT)
+  if (!args.dev) {
+    let unless = function(middleware, ...paths) {
+      return function (req, res, next) {
+        const pathCheck = paths.some(path => path === req.baseUrl)
+        pathCheck ? next() : middleware(req, res, next)
+      }
+    }
+    app.use('/app/*', unless(verifyJWT, '/app/users/add', '/app/login', '/app/getUsername'))
+  }
   else console.log("Dev options enabled: authentication is not required for endpoint access")
-  
+
   // imports logs and users routes
   app.use(require("./routes/logs"))
   app.use(require("./routes/users"));

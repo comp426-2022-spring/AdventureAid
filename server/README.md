@@ -147,7 +147,7 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
-curl http://localhost:5000/app/users/testuser/
+curl http://localhost:5000/app/users/user3/
 ```
 
 #### Response body

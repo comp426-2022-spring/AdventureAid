@@ -43,6 +43,8 @@ function LoginPage() {
     function handleLogout() {
         // removes the token to un-authenticate user
         localStorage.removeItem("token")
+        
+        // call to get username to update page if something changes
         getUsername()
     }
 

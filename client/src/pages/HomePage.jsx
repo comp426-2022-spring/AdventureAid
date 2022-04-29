@@ -16,11 +16,13 @@ import RequestService from "../services/RequestService";
   useEffect(() => {
     fetchCountry()
 }, [])
-//   return (
-//     <div>
-//         <h1>{message}</h1>
-//         <input required id="username" type="username" placeholder="username"/>
-//     </div>
-// );
+  return (
+    <pre>
+      <p>Countries!</p>
+      <div>
+        //need to get the countries to spit out on page...
+    </div>
+    </pre>
+);
   }
 export default HomePage;

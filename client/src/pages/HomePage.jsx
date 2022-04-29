@@ -54,32 +54,6 @@ import RequestService from "../services/RequestService";
       })
     }
     useEffect(() => {
-<<<<<<< HEAD
-      if (!isProfileCountries) {
-        getAllCountries()
-      }
-      else {
-        getProfileCountries()
-      }
-    }, [isProfileCountries, isLoading])
-
-  // if state isn't loaded
-  if (typeof test === 'undefined' || isLoading) {
-    return (
-      <p>loading...</p>
-    )
-  }
-  // if state array is empty
-  if (test.length == 0) {
-    return (
-      <div>
-        <button onClick={allCountriesHandler}>All Countries</button>
-        <button onClick={profileCountriesHandler}>Profile Countries</button>
-        <p>No countries match your profile!</p>
-      </div>
-    )
-  }
-=======
     RequestService.getAllCountriesData().then((res) => {
       setTest(res.data);
       console.log(res.data);
@@ -87,7 +61,6 @@ import RequestService from "../services/RequestService";
       console.log(error);
     })
 }, []);
->>>>>>> 043ed38ca15d9a6dd9797b0416eb0f460614fbd4
   return (
     <pre>
        <div>
@@ -102,12 +75,8 @@ import RequestService from "../services/RequestService";
                           )
                         }</p>
         </div>
-<<<<<<< HEAD
-      </pre>
-=======
     </pre>
      
->>>>>>> 043ed38ca15d9a6dd9797b0416eb0f460614fbd4
 );
   }
   export default HomePage;

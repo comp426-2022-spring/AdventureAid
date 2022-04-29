@@ -1,0 +1,3 @@
+import fetch from "node-fetch";
+//add api pathway where stephen put the countries and their info
+const api_url = ' ';

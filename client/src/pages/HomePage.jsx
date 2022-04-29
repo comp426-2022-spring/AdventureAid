@@ -9,7 +9,7 @@ import RequestService from "../services/RequestService";
     //const allCountriesData = [RequestService.getAllCountriesData()];
     await RequestService.getAllCountriesData().then((res) => {
        const data = res.data;
-       //console.log(data);
+       console.log(data);
     })
 }
 
@@ -20,13 +20,15 @@ import RequestService from "../services/RequestService";
     <pre>
       <p>Countries!</p>
       <div>
-        <h1>{}</h1>
+        <h1>{'countries are supposed to be here'}</h1>
     </div>
     </pre>
 );
   }
-  export default async (req, res) => {
-    process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
-    const countries = await HomePage();
-    res.send(countries);
-  }
+  export default HomePage;
+  // export default async (req, res) => {
+  //   process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+  //   const countries = await HomePage();
+  //   res.send(countries);
+  // }
+  

@@ -54,26 +54,39 @@ import RequestService from "../services/RequestService";
       })
     }
     useEffect(() => {
-    RequestService.getAllCountriesData().then((res) => {
-      setTest(res.data);
-      console.log(res.data);
-    }).catch(error => {
-      console.log(error);
-    })
-}, []);
+    if (isProfileCountries) {
+      getProfileCountries()
+    } else {
+      getAllCountries()
+    }
+}, [isProfileCountries]);
+
+  if (typeof test == 'undefined') {
+    return (
+      <p>loading ...</p>
+    )
+  }
   return (
     <pre>
        <div>
-            <button onClick={allCountriesHandler}>All Countries</button>
-            <button onClick={profileCountriesHandler}>Profile Countries</button>
-            <p>{
-                            test.map(
-                              t => 
-                              <li key = {t.names.name}>
-                                      <b>{t.names.name}</b>
-                              </li>
-                          )
-                        }</p>
+        <button onClick={allCountriesHandler}>All Countries</button>
+        <button onClick={profileCountriesHandler}>Profile Countries</button>
+         {test.length == 0 ? (
+         <p>No matched countries</p>
+          ) : (
+            <div> 
+           <p>{
+                           test.map(
+                             t => 
+                             <li key = {t.names.name}>
+                                     <b>{t.names.name}</b>
+                             </li>
+                         )
+                       }
+                       </p>
+
+            </div>
+          )}
         </div>
     </pre>
      

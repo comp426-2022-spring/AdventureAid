@@ -54,6 +54,7 @@ import RequestService from "../services/RequestService";
       })
     }
     useEffect(() => {
+<<<<<<< HEAD
       if (!isProfileCountries) {
         getAllCountries()
       }
@@ -78,6 +79,15 @@ import RequestService from "../services/RequestService";
       </div>
     )
   }
+=======
+    RequestService.getAllCountriesData().then((res) => {
+      setTest(res.data);
+      console.log(res.data);
+    }).catch(error => {
+      console.log(error);
+    })
+}, []);
+>>>>>>> 043ed38ca15d9a6dd9797b0416eb0f460614fbd4
   return (
     <pre>
        <div>
@@ -92,7 +102,12 @@ import RequestService from "../services/RequestService";
                           )
                         }</p>
         </div>
+<<<<<<< HEAD
       </pre>
+=======
+    </pre>
+     
+>>>>>>> 043ed38ca15d9a6dd9797b0416eb0f460614fbd4
 );
   }
   export default HomePage;

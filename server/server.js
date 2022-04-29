@@ -59,3 +59,4 @@
     console.log(`Server is running on port: ${port}`);
   });
 })();
+//export const port = process.env.PORT || 5000;

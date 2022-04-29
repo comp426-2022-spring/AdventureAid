@@ -13,11 +13,18 @@ import RequestService from "../services/RequestService";
       console.log(error);
     })
 })
-
   return (
     <pre>
-      <p>Countries!</p>
-      <p>{test}</p>
+       <div>
+            <p>{
+                            test.map(
+                                t => 
+                                <li key = {t.getAllCountriesData.country}>
+                                        <b>{t.getAllCountriesData.country}</b>
+                                </li>
+                            )
+                        }</p>
+        </div>
     </pre>
 );
   }

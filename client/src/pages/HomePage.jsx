@@ -14,11 +14,12 @@ import RequestService from "../services/RequestService";
     }).catch(error => {
       console.log(error);
     })
+    useEffect(() => {
+      fetchCountry()
+  }, [])
 }
 
-  useEffect(() => {
-    fetchCountry()
-}, [])
+ 
 
   return (
     <pre>

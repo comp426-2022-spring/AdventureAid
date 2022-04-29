@@ -3,7 +3,7 @@ import './HomePage.css';
 import RequestService from "../services/RequestService";
 
   function HomePage() {
-    const [message, setMessage] = useState("");
+   // const [message, setMessage] = useState("");
     //fetch array of country names 
   const fetchCountry = async () => {
     //const allCountriesData = [RequestService.getAllCountriesData()];
@@ -27,6 +27,6 @@ import RequestService from "../services/RequestService";
   }
   export default async (req, res) => {
     process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
-      const countries = await fetchCountry();
+    const countries = await HomePage();
     res.send(countries);
   }

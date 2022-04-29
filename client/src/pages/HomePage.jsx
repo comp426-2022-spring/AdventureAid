@@ -8,8 +8,8 @@ import RequestService from "../services/RequestService";
   const fetchCountry = async () => {
     //const allCountriesData = [RequestService.getAllCountriesData()];
     await RequestService.getAllCountriesData().then((res) => {
-       const data = res.data
-       console.log(data);
+       const data = res.send(data);
+       //console.log(data);
     })
 }
 
@@ -20,7 +20,7 @@ import RequestService from "../services/RequestService";
     <pre>
       <p>Countries!</p>
       <div>
-        //need to get the countries to spit out on page...
+        <h1>{}</h1>
     </div>
     </pre>
 );

@@ -8,8 +8,9 @@ import RequestService from "../services/RequestService";
   const fetchCountry = async () => {
     //const allCountriesData = [RequestService.getAllCountriesData()];
     await RequestService.getAllCountriesData().then((res) => {
-       const data = res.json;
-       console.log(data);
+       const data = res.data;
+    }).catch(error => {
+      console.log(error);
     })
 }
 

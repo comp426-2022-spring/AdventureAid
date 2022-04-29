@@ -12,7 +12,7 @@ import RequestService from "../services/RequestService";
     }).catch(error => {
       console.log(error);
     })
-})
+}, []);
   return (
     <pre>
        <div>
@@ -26,6 +26,7 @@ import RequestService from "../services/RequestService";
                         }</p>
         </div>
     </pre>
+     
 );
   }
   export default HomePage;

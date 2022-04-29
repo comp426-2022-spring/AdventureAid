@@ -8,7 +8,7 @@ import RequestService from "../services/RequestService";
   const fetchCountry = async () => {
     //const allCountriesData = [RequestService.getAllCountriesData()];
     await RequestService.getAllCountriesData().then((res) => {
-       const data = res.send(data);
+       const data = res.data;
        //console.log(data);
     })
 }
@@ -25,4 +25,8 @@ import RequestService from "../services/RequestService";
     </pre>
 );
   }
-export default HomePage;
+  export default async (req, res) => {
+    process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+      const countries = await fetchCountry();
+    res.send(countries);
+  }

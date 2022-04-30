@@ -10,7 +10,6 @@ import RequestService from "../services/RequestService";
 
     // state for if new data is loading
     const [isLoading, setIsLoading] = useState(false)
-
     // recieves and sets state to hold all countries
     function getAllCountries() {
       RequestService.getAllCountriesData().then((res) => {
@@ -68,8 +67,8 @@ import RequestService from "../services/RequestService";
   return (
     <pre>
        <div>
-        <button onClick={allCountriesHandler}>All Countries</button>
-        <button onClick={profileCountriesHandler}>Profile Countries</button>
+        <button id="allcountries" onClick={allCountriesHandler}>All Countries</button>
+        <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (

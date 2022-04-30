@@ -2,9 +2,15 @@
     text-align: center;
   }
   
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
+  .button-allcountries {
+    background-color: azure;
+    position: absolute;
+    top: 50%
+  }
+  .button-profilecountries {
+    background-color: magenta;
+    position: absolute;
+    top: 50%
   }
   
   @media (prefers-reduced-motion: no-preference) {

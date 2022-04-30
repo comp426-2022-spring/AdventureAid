@@ -20,7 +20,6 @@ import RequestService from "../services/RequestService";
         console.log(error);
       })
     }
-
     // handles allcountries button press
     function allCountriesHandler() {
       setIsProfileCountries(false)
@@ -63,7 +62,7 @@ import RequestService from "../services/RequestService";
 
   if (typeof test == 'undefined') {
     return (
-      <p>loading ...</p>
+      <p>loading countries ...</p>
     )
   }
   return (

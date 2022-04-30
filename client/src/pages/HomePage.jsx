@@ -97,7 +97,7 @@ useEffect(() => {
                 <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
             </div></p>
        <div style={{textAlign: "center"}}>
-        <button className="button-2" onClick={allCountriesHandler}>All Countries</button>
+        <button className="button-2" onClick={getAllCountriesHandler}>All Countries</button>
         <button className="button-2" onClick={profileCountriesHandler}>Profile Countries</button>
          {test.length == 0 ? (
          <p>No matched countries</p>

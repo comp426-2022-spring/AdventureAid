@@ -110,13 +110,13 @@ function getCountryData(){
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (
-            <div> 
+            <div style={{textAlign: "center"}}> 
            <p> {
                            test.map(
                              t => 
-                             <li key = {t.names.name}>
-                                     <b>{t.names.name}</b>
-                                     <div> <img width="130" src={'https://countryflagsapi.com/png/' + t.names.name}></img> </div>
+                             <li key = {t.names.name} style={{listStyle: "none"}}>
+                                     <b><button className="button-1" style={{marginBottom: 20}}>{t.names.name}</button></b>
+                                     <div> <img width="130" style={{marginBottom: 20}} src={'https://countryflagsapi.com/png/' + t.names.name}></img> </div>
                              </li>
                          )
                        }

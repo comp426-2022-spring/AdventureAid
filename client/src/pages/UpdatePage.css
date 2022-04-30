@@ -36,7 +36,16 @@
     resize: both;
     overflow: scroll;
   }
-  .list{
+
+  li{
     list-style-type: none;
+  }
+
+  input{
+    text-align: center;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    border-color: gray;
   }
   

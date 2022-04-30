@@ -11,6 +11,9 @@ import RequestService from "../services/RequestService";
     // state for if new data is loading
     const [isLoading, setIsLoading] = useState(false)
     // recieves and sets state to hold all country names
+
+    const [isCountryClicked, setIsCountryClicked] = useState(false);
+
     function getAllCountriesData() {
       RequestService.getAllCountriesData().then((res) => {
         setTest(res.data);
@@ -72,6 +75,14 @@ function getCountryData(){
       getAllCountriesData()
     }
 }, [isProfileCountries]);
+
+useEffect(() => {
+  if(isCountryClicked){
+    getCountryData()
+  } else {
+    getAllCountriesData()
+  }
+})
 
   if (typeof test == 'undefined') {
     return (

@@ -11,8 +11,8 @@ import RequestService from "../services/RequestService";
     // state for if new data is loading
     const [isLoading, setIsLoading] = useState(false)
     // recieves and sets state to hold all country names
-    function getCountries() {
-      RequestService.getCountries().then((res) => {
+    function getAllCountriesData() {
+      RequestService.getCountriesAllCountriesData().then((res) => {
         setTest(res.data);
         console.log(res.data);
       }).catch(error => {
@@ -20,7 +20,7 @@ import RequestService from "../services/RequestService";
       })
     }
     // handles allcountries button press
-    function getCountriesHandler() {
+    function getAllCountriesHandler() {
       setIsProfileCountries(false)
     }
 
@@ -58,7 +58,7 @@ import RequestService from "../services/RequestService";
     if (isProfileCountries) {
       getProfileCountries()
     } else {
-      getCountries()
+      getAllCountriesData()
     }
 }, [isProfileCountries]);
 
@@ -70,7 +70,7 @@ import RequestService from "../services/RequestService";
   return (
     <pre>
        <div>
-        <button id="allcountries" className='button-allcountries' onClick={getCountriesHandler}>All Countries</button>
+        <button id="allcountries" className='button-allcountries' onClick={getAllCountriesHandler}>All Countries</button>
         <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
         {/* <button id="afghanistan" onClick={oneCountryHandler}>Afghanistan</button> */}
          {test.length == 0 ? (

@@ -1,5 +1,6 @@
 import React, { useEffect, useState }from "react";
 import RequestService from "../services/RequestService";
+import { Link } from "react-router-dom";
 import './UpdatePage.css';
 
 function LoginPage() {
@@ -14,6 +15,7 @@ function LoginPage() {
            // actions to take if user is logged in
            if (data.isLoggedIn) {
                setIsLoggedIn(true)
+               setMessage("Logged in")
                RequestService.getUser(data.username).then((res) => {
                    console.log(res.data)
                    setUser(res.data)
@@ -103,6 +105,12 @@ function LoginPage() {
     }
     return (
         <div>
+             <p style={{textAlign: "center"}}> <div class="tab">
+                <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
+                <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
+                <Link to="/login"><button class="tablinks" className="button-1">Login</button></Link>
+                <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
+            </div></p>
             <p style={{textAlign: "center", padding: 10, fontSize: 100, color: "pink"}}>{message}</p>
             <div style={{textAlign: "center", marginBottom: 20, fontSize: 30}}>
                 <strong htmlFor="username">Username: {user._id}</strong>

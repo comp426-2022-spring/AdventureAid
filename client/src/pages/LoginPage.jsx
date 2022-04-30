@@ -1,5 +1,6 @@
 import React, { useEffect, useState }from "react";
 import RequestService from "../services/RequestService";
+import { Link } from "react-router-dom";
 import './LoginPage.css'; 
 
 const backg = new URL('https://www.teahub.io/viewwp/TJiwii_wallpaper-pink-blue-gradient-linear-light-sky-blue/');
@@ -54,10 +55,11 @@ function LoginPage() {
 
     return (
         <div>
-            <p style={{textAlign: "center"}}> <div class="tab">
-                <button class="tablinks" className="button-1" onclick="openCity(event, 'London')">Home</button>
-                <button class="tablinks" className="button-1" onclick="openCity(event, 'Paris')">Sign Up</button>
-                <button class="tablinks" className="button-1" onclick="openCity(event, 'Tokyo')">My Profile</button>
+             <p style={{textAlign: "center"}}> <div class="tab">
+                <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
+                <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
+                <Link to="/login"><button class="tablinks" className="button-1">Login</button></Link>
+                <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
             </div></p>
             <h2 style={{textAlign: "center", padding: 20, fontSize: 100, color: "pink"}}>{message}</h2>
             <p style={{textAlign: "center"}}>

@@ -36,7 +36,8 @@
     resize: both;
     overflow: scroll;
   }
-  .list{
+  
+  li{
     list-style-type: none;
   }
   

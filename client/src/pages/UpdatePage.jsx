@@ -32,7 +32,6 @@ function LoginPage() {
                             input.defaultValue=languages[i]
                         }
                         const li = document.createElement('li')
-                        li.name = "element"
                         li.appendChild(input)
                         list.appendChild(li)
                    }
@@ -122,12 +121,12 @@ function LoginPage() {
             </div>
                 
             <div style={{textAlign: "center"}} >
-                <label style={{marginRight: 10, marginLeft: 10}} htmlFor="name">Name</label>
+                <label style={{marginRight: 10, marginLeft: 5}} htmlFor="name">Name</label>
                 <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} defaultValue={user.name} required id="name" type="name" placeholder="new name"/>
             </div>
             
             <div style={{textAlign: "center"}}>
-                <label style={{marginRight: 10, marginLeft: 10}} htmlFor="password">Password</label>
+                <label style={{marginRight: 10, marginLeft: -20}} htmlFor="password">Password</label>
                 <input style={{textAlign: "center", marginBottom: 50, marginRight: 10, borderRadius: 10, borderColor: "gray"}} defaultValue={user.password} required id="password" type="password" placeholder="new password"/>
             </div>
 
@@ -155,7 +154,7 @@ function LoginPage() {
                 <input  defaultChecked={user.vaccinations.cholera} id="cholera" type="checkbox"></input>
             </div>
 
-            <div style={{textAlign: "center", marginTop: 20}}>
+            <div style={{textAlign: "center", marginTop: 20, marginLeft: 25}}>
             <label>Languages:</label>
             </div>
 

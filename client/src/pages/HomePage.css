@@ -34,6 +34,18 @@
     color: #61dafb;
   }
   
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .modal_content {
+    background-color: white;
+    position: absolute;
+  }
+  
   @keyframes App-logo-spin {
     from {
       transform: rotate(0deg);

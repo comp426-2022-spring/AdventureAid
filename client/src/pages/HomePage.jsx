@@ -1,4 +1,4 @@
-import React, { useEffect, useState  } from 'react';
+import React, { useEffect, useState, Component  } from 'react';
 import './HomePage.css';
 import RequestService from "../services/RequestService";
 
@@ -10,8 +10,8 @@ import RequestService from "../services/RequestService";
 
     // state for if new data is loading
     const [isLoading, setIsLoading] = useState(false)
-    // recieves and sets state to hold all country names
-
+    
+    // state for if one country is clicked
     const [isCountryClicked, setIsCountryClicked] = useState(false);
 
     function getAllCountriesData() {
@@ -32,8 +32,8 @@ import RequestService from "../services/RequestService";
       setIsProfileCountries(true)
     }
  // handles first country button press
- function oneCountryHandler(country) {
-  console.log(country);
+    function oneCountryHandler(country) {
+      console.log(country);
 }
     // recieves and sets state to hold profile countries
     function getProfileCountries() {
@@ -76,12 +76,12 @@ function getCountryData(){
     }
 }, [isProfileCountries]);
 
-useEffect(() => {
-  if(isCountryClicked){
-    getCountryData()
-  } else {
-    getAllCountriesData()
-  }
+    useEffect(() => {
+    if(isCountryClicked){
+     getCountryData()
+    } else {
+      getAllCountriesData()
+    }
 })
 
   if (typeof test == 'undefined') {
@@ -94,7 +94,8 @@ useEffect(() => {
        <div>
         <button id="allcountries" className='button-allcountries' onClick={getAllCountriesHandler}>All Countries</button>
         <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
-        {/* <button id="onecountry" onClick={oneCountryHandler}>Country</button> */}
+        <button id="onecountry" onClick={oneCountryHandler}>Afghanistan</button>
+
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (
@@ -117,5 +118,5 @@ useEffect(() => {
     </pre>
      
 );
-                      }
+                          }
   export default HomePage;

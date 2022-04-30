@@ -78,7 +78,7 @@ useEffect(() => {
   if(isCountryClicked){
     getCountryData();
   } else {
-    getAllCountriesData;
+    getAllCountriesData();
   }
 }, [isCountryClicked]);
 

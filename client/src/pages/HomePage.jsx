@@ -75,7 +75,7 @@ import RequestService from "../services/RequestService";
          <p>No matched countries</p>
           ) : (
             <div> 
-           <p>{
+           <p> {
                            test.map(
                              t => 
                              <li key = {t.names.name}>
@@ -83,7 +83,7 @@ import RequestService from "../services/RequestService";
                              </li>
                          )
                        }
-                       </p>
+          </p>
 
             </div>
           )}

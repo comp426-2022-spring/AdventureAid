@@ -7,14 +7,23 @@ function ClickedCountry() {
 
     //get countries data
     function getCountryData() {
-        RequestService.getCountryData("afghanistan").then((res) => {
-          setCountry(res.data);
-          console.log(res.data);
-        }).catch(error => {
+      let countryInfo = RequestService.getCountriesData();
+      try {
+          infoArray = countryInfo.map(country => ({
+              name: country.name,
+              timezone: country.timezone,
+              vaccination: country.vaccination,
+              language: country.language,
+              water: country.water,
+          })
+          )
+          //return infoArray;
+          setCountry(res.infoArray);
+          console.log(res.infoArray);
+        } catch (error) {
           console.log(error);
-        })
       }
-
+      }
       useEffect(() => {
           getCountryData()
       })

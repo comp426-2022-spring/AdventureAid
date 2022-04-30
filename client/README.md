@@ -2,6 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Dependencies
+*list of dependencies used in client / front-end*
+```
+NAME: VERSION
+
+"@testing-library/jest-dom": "^5.16.3",
+"@testing-library/react": "^12.1.4",
+"@testing-library/user-event": "^13.5.0",
+"axios": "^0.26.1",
+"react": "^17.0.2",
+"react-dom": "^17.0.2",
+"react-router-dom": "^6.3.0",
+"react-scripts": "5.0.0",
+"web-vitals": "^2.1.4"
+```
+
 ## Available Scripts
 
 In the project directory, you can run:

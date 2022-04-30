@@ -8,9 +8,6 @@ import RequestService from "../services/RequestService";
     // false for all; true for profile
     const [isProfileCountries, setIsProfileCountries] = useState(false)
 
-    // false for all; true for one country
-    const [isCountryClicked, setIsCountryClicked] = useState(false);
-
     // state for if new data is loading
     const [isLoading, setIsLoading] = useState(false)
     // recieves and sets state to hold all country names
@@ -75,14 +72,6 @@ function getCountryData(){
       getAllCountriesData()
     }
 }, [isProfileCountries]);
-
-useEffect(() => {
-  if(isCountryClicked){
-    getCountryData();
-  } else {
-    getAllCountriesData();
-  }
-}, [isCountryClicked]);
 
   if (typeof test == 'undefined') {
     return (

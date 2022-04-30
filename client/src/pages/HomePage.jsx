@@ -2,7 +2,7 @@ import React, { useEffect, useState  } from 'react';
 import './HomePage.css';
 import RequestService from "../services/RequestService";
 import { Link } from "react-router-dom";
-
+import image from './PINKadven_aid_logo.png';
   function HomePage() {
     const [test, setTest] = useState()
     
@@ -96,9 +96,14 @@ useEffect(() => {
                 <Link to="/login"><button class="tablinks" className="button-1">Login</button></Link>
                 <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
             </div></p>
+            <div style={{textAlign: "center", marginTop: 20, marginBottom: 20}} >
+              <img src={image} width={400}/>
+            </div>
        <div style={{textAlign: "center"}}>
         <button className="button-2" onClick={getAllCountriesHandler}>All Countries</button>
         <button className="button-2" onClick={profileCountriesHandler}>Profile Countries</button>
+      </div>
+      <div>
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (
@@ -108,7 +113,7 @@ useEffect(() => {
                              t => 
                              <li key = {t.names.name}>
                                      <b>{t.names.name}</b>
-                                     <img width="20" height="10" src={'https://countryflagsapi.com/png/' + t.names.name}></img>
+                                     <div> <img width="130" src={'https://countryflagsapi.com/png/' + t.names.name}></img> </div>
                              </li>
                          )
                        }

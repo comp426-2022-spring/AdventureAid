@@ -1,10 +1,10 @@
 import React, { useEffect, useState  } from 'react';
 import './HomePage.css';
-import RequestService from "../services/RequestService";
 import { Link } from "react-router-dom";
 import image from './PINKadven_aid_logo.png';
 import AllCountries from '../components/AllCountries';
 import ProfileCountries from '../components/ProfileCountries';
+import ClickedCountry from './ClickedCountry';
   function HomePage() {
     // false for all; true for profile
     const [isProfileCountries, setIsProfileCountries] = useState(false)
@@ -51,7 +51,7 @@ import ProfileCountries from '../components/ProfileCountries';
         <button className="button-2" onClick={profileCountriesHandler}>Profile Countries</button>
       </div>
       <div>
-         {isCountryClicked ? <p>clicked on: {country}</p> : 
+         {isCountryClicked ? <ClickedCountry country={country}/> : 
           <div>
            {!isProfileCountries ? <AllCountries clickCountryHandler={clickCountryHandler}/> : <ProfileCountries clickCountryHandler={clickCountryHandler}/> }
           </div>

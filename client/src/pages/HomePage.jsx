@@ -54,14 +54,13 @@ import RequestService from "../services/RequestService";
         }
       })
     }
-function getCountryData(country){
-  RequestService.getCountriesAllCountriesData().getCountryData(country);
- let countryInfoArray = country?.map(event => ({
-    //pull country data 
-    name: event.title,
-    description: event.description,
-}));
-//return countryInfoArray;
+function getCountryData(){
+  RequestService.getAllCountriesData().getCountryData().then((res => {
+    setTest(res.data);
+    console.log(res.data);
+  }).catch(error => {
+    console.log(error);
+  }))
   }
 
     useEffect(() => {
@@ -82,7 +81,7 @@ function getCountryData(country){
        <div>
         <button id="allcountries" className='button-allcountries' onClick={getAllCountriesHandler}>All Countries</button>
         <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
-        <button id="onecountry" onClick={oneCountryHandler}>{country}</button>
+        <button id="onecountry" onClick={oneCountryHandler}>Country</button>
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (

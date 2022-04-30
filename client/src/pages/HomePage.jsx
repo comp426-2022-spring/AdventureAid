@@ -12,21 +12,27 @@ import ProfileCountries from '../components/ProfileCountries';
     // false for all; true for one country
     const [isCountryClicked, setIsCountryClicked] = useState(false);
 
+    // state for the country
+    const [country, setCountry] = useState("")
+
     // handles allcountries button press
     function getAllCountriesHandler() {
       setIsProfileCountries(false)
       setIsCountryClicked(false)
+      setCountry("")
     }
 
     // handles profile countries button press
     function profileCountriesHandler() {
       setIsProfileCountries(true)
       setIsCountryClicked(false)
+      setCountry("")
     }
 
     // handles first country button press
-    function clickCountryHandler() {
-      setIsCountryClicked(true);
+    const clickCountryHandler = (country) => {
+      setIsCountryClicked(true)
+      setCountry(country)
     }
     
   return (
@@ -45,7 +51,7 @@ import ProfileCountries from '../components/ProfileCountries';
         <button className="button-2" onClick={profileCountriesHandler}>Profile Countries</button>
       </div>
       <div>
-         {isCountryClicked ? <p>Country file here</p> : 
+         {isCountryClicked ? <p>clicked on: {country}</p> : 
           <div>
            {!isProfileCountries ? <AllCountries clickCountryHandler={clickCountryHandler}/> : <ProfileCountries clickCountryHandler={clickCountryHandler}/> }
           </div>

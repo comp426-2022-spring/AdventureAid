@@ -3,7 +3,6 @@ import './HomePage.css';
 import RequestService from "../services/RequestService";
 import { Link } from "react-router-dom";
 import image from './PINKadven_aid_logo.png';
-
   function HomePage() {
     const [test, setTest] = useState()
     

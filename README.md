@@ -8,6 +8,9 @@
 4. npm run client
 5. go to https://localhost:3000/
 ``````
+
+# More info on running / installation in server and client README files
+
 ## UPDATE
 
 You don't need to accept this assignment since you are already assigned to teams. So, there is not assignment invite link for a99.

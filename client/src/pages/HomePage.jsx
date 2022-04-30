@@ -91,7 +91,6 @@ useEffect(() => {
   }
   return (
     <pre>
-<<<<<<< HEAD
       <p style={{textAlign: "center"}}> <div class="tab">
                 <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
                 <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
@@ -102,14 +101,10 @@ useEffect(() => {
               <img src={image} width={400}/>
             </div>
        <div style={{textAlign: "center"}}>
-        <button className="button-2" onClick={allCountriesHandler}>All Countries</button>
+        <button className="button-2" onClick={getAllCountriesHandler}>All Countries</button>
         <button className="button-2" onClick={profileCountriesHandler}>Profile Countries</button>
-=======
-       <div>
-        <button id="allcountries" className='button-allcountries' onClick={getAllCountriesHandler}>All Countries</button>
-        <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
-        <button id="onecountry" onClick={oneCountryHandler}>Country</button>
->>>>>>> 0cfd01170395ab268a48b393f9046267c1943d24
+      </div>
+      <div>
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (
@@ -119,7 +114,7 @@ useEffect(() => {
                              t => 
                              <li key = {t.names.name}>
                                      <b>{t.names.name}</b>
-                                     <img width="20" height="10" src={'https://countryflagsapi.com/png/' + t.names.name}></img>
+                                     <div> <img width="130" src={'https://countryflagsapi.com/png/' + t.names.name}></img> </div>
                              </li>
                          )
                        }

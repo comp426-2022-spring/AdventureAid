@@ -5,13 +5,13 @@ function OneCountry() {
 
     // Gets username if user is logged in 
      const getCountryData = async () => {
-         await RequestService.getCountryData(country).then((res) => {
+         await RequestService.getAllCountriesData().getCountryData().then((res) => {
             const data = res.data
         })
      }
 
     useEffect(() => {
-        getCountryData(country);
+        getCountryData();
     }, [])
 
     // handles login button
@@ -29,4 +29,4 @@ function OneCountry() {
     );
 }
 
-export default LoginPage;
+export default OneCountry;

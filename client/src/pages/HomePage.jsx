@@ -10,9 +10,9 @@ import RequestService from "../services/RequestService";
 
     // state for if new data is loading
     const [isLoading, setIsLoading] = useState(false)
-    // recieves and sets state to hold all countries
-    function getAllCountries() {
-      RequestService.getAllCountriesData().then((res) => {
+    // recieves and sets state to hold all country names
+    function getCountries() {
+      RequestService.getCountries().then((res) => {
         setTest(res.data);
         console.log(res.data);
       }).catch(error => {
@@ -20,7 +20,7 @@ import RequestService from "../services/RequestService";
       })
     }
     // handles allcountries button press
-    function allCountriesHandler() {
+    function getCountriesHandler() {
       setIsProfileCountries(false)
     }
 
@@ -28,7 +28,10 @@ import RequestService from "../services/RequestService";
     function profileCountriesHandler() {
       setIsProfileCountries(true)
     }
-
+//  // handles first country button press
+//  function oneCountryHandler() {
+//   setIsProfileCountries(false)
+// }
     // recieves and sets state to hold profile countries
     function getProfileCountries() {
       RequestService.getUsername().then(user => {
@@ -55,7 +58,7 @@ import RequestService from "../services/RequestService";
     if (isProfileCountries) {
       getProfileCountries()
     } else {
-      getAllCountries()
+      getCountries()
     }
 }, [isProfileCountries]);
 
@@ -67,8 +70,9 @@ import RequestService from "../services/RequestService";
   return (
     <pre>
        <div>
-        <button id="allcountries" onClick={allCountriesHandler}>All Countries</button>
+        <button id="allcountries" className='button-allcountries' onClick={getCountriesHandler}>All Countries</button>
         <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
+        {/* <button id="afghanistan" onClick={oneCountryHandler}>Afghanistan</button> */}
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (

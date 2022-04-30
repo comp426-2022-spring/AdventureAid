@@ -10,11 +10,13 @@ import image from './PINKadven_aid_logo.png';
     // false for all; true for profile
     const [isProfileCountries, setIsProfileCountries] = useState(false)
 
+    // false for all; true for one country
+    const [isCountryClicked, setIsCountryClicked] = useState(false);
+
     // state for if new data is loading
     const [isLoading, setIsLoading] = useState(false)
-
-    // recieves and sets state to hold all countries
-    function getAllCountries() {
+    // recieves and sets state to hold all country names
+    function getAllCountriesData() {
       RequestService.getAllCountriesData().then((res) => {
         setTest(res.data);
         console.log(res.data);
@@ -23,7 +25,7 @@ import image from './PINKadven_aid_logo.png';
       })
     }
     // handles allcountries button press
-    function allCountriesHandler() {
+    function getAllCountriesHandler() {
       setIsProfileCountries(false)
     }
 
@@ -31,7 +33,10 @@ import image from './PINKadven_aid_logo.png';
     function profileCountriesHandler() {
       setIsProfileCountries(true)
     }
-
+ // handles first country button press
+ function oneCountryHandler() {
+  setIsCountryClicked(true);
+}
     // recieves and sets state to hold profile countries
     function getProfileCountries() {
       RequestService.getUsername().then(user => {
@@ -54,13 +59,30 @@ import image from './PINKadven_aid_logo.png';
         }
       })
     }
+function getCountryData(){
+  RequestService.getAllCountriesData().getCountryData().then((res => {
+    setTest(res.data);
+    console.log(res.data);
+  }).catch(error => {
+    console.log(error);
+  }))
+  }
+
     useEffect(() => {
     if (isProfileCountries) {
       getProfileCountries()
     } else {
-      getAllCountries()
+      getAllCountriesData()
     }
 }, [isProfileCountries]);
+
+useEffect(() => {
+  if(isCountryClicked){
+    getCountryData();
+  } else {
+    getAllCountriesData();
+  }
+}, [isCountryClicked]);
 
   if (typeof test == 'undefined') {
     return (
@@ -69,6 +91,7 @@ import image from './PINKadven_aid_logo.png';
   }
   return (
     <pre>
+<<<<<<< HEAD
       <p style={{textAlign: "center"}}> <div class="tab">
                 <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
                 <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
@@ -81,6 +104,12 @@ import image from './PINKadven_aid_logo.png';
        <div style={{textAlign: "center"}}>
         <button className="button-2" onClick={allCountriesHandler}>All Countries</button>
         <button className="button-2" onClick={profileCountriesHandler}>Profile Countries</button>
+=======
+       <div>
+        <button id="allcountries" className='button-allcountries' onClick={getAllCountriesHandler}>All Countries</button>
+        <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
+        <button id="onecountry" onClick={oneCountryHandler}>Country</button>
+>>>>>>> 0cfd01170395ab268a48b393f9046267c1943d24
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (
@@ -102,5 +131,5 @@ import image from './PINKadven_aid_logo.png';
     </pre>
      
 );
-  }
+                      }
   export default HomePage;

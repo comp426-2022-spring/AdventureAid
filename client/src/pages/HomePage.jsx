@@ -32,8 +32,8 @@ import RequestService from "../services/RequestService";
       setIsProfileCountries(true)
     }
  // handles first country button press
- function oneCountryHandler() {
-  setIsCountryClicked(true);
+ function oneCountryHandler(country) {
+  console.log(country);
 }
     // recieves and sets state to hold profile countries
     function getProfileCountries() {
@@ -57,6 +57,8 @@ import RequestService from "../services/RequestService";
         }
       })
     }
+   //quick handler for list item 
+   //quick handler function where the pop up appears 
 function getCountryData(){
   RequestService.getAllCountriesData().getCountryData().then((res => {
     setTest(res.data);
@@ -92,21 +94,23 @@ useEffect(() => {
        <div>
         <button id="allcountries" className='button-allcountries' onClick={getAllCountriesHandler}>All Countries</button>
         <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
-        <button id="onecountry" onClick={oneCountryHandler}>Country</button>
+        {/* <button id="onecountry" onClick={oneCountryHandler}>Country</button> */}
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (
             <div> 
            <p>{
-                           test.map(
-                             t => 
+                           test.map( (t) => 
+                            
                              <li key = {t.names.name}>
-                                     <b>{t.names.name}</b>
+                                     {/* <b>{t.names.name}</b> */}
+                                    onClick = {() => oneCountryHandler(t.names)}
                              </li>
-                         )
-                       }
-                       </p>
 
+
+                         )
+                
+                           }</p>
             </div>
           )}
         </div>

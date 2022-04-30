@@ -74,9 +74,9 @@ import { Link } from "react-router-dom";
                 <Link to="/login"><button class="tablinks" className="button-1">Login</button></Link>
                 <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
             </div></p>
-       <div>
-        <button onClick={allCountriesHandler}>All Countries</button>
-        <button onClick={profileCountriesHandler}>Profile Countries</button>
+       <div style={{textAlign: "center"}}>
+        <button className="button-2" onClick={allCountriesHandler}>All Countries</button>
+        <button className="button-2" onClick={profileCountriesHandler}>Profile Countries</button>
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (

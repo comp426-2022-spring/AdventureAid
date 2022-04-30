@@ -8,11 +8,13 @@ import RequestService from "../services/RequestService";
     // false for all; true for profile
     const [isProfileCountries, setIsProfileCountries] = useState(false)
 
+    // false for all; true for one country
+    const [isCountryClicked, setIsCountryClicked] = useState(false);
+
     // state for if new data is loading
     const [isLoading, setIsLoading] = useState(false)
-
-    // recieves and sets state to hold all countries
-    function getAllCountries() {
+    // recieves and sets state to hold all country names
+    function getAllCountriesData() {
       RequestService.getAllCountriesData().then((res) => {
         setTest(res.data);
         console.log(res.data);
@@ -21,7 +23,7 @@ import RequestService from "../services/RequestService";
       })
     }
     // handles allcountries button press
-    function allCountriesHandler() {
+    function getAllCountriesHandler() {
       setIsProfileCountries(false)
     }
 
@@ -29,7 +31,10 @@ import RequestService from "../services/RequestService";
     function profileCountriesHandler() {
       setIsProfileCountries(true)
     }
-
+ // handles first country button press
+ function oneCountryHandler() {
+  setIsCountryClicked(true);
+}
     // recieves and sets state to hold profile countries
     function getProfileCountries() {
       RequestService.getUsername().then(user => {
@@ -52,13 +57,30 @@ import RequestService from "../services/RequestService";
         }
       })
     }
+function getCountryData(){
+  RequestService.getAllCountriesData().getCountryData().then((res => {
+    setTest(res.data);
+    console.log(res.data);
+  }).catch(error => {
+    console.log(error);
+  }))
+  }
+
     useEffect(() => {
     if (isProfileCountries) {
       getProfileCountries()
     } else {
-      getAllCountries()
+      getAllCountriesData()
     }
 }, [isProfileCountries]);
+
+useEffect(() => {
+  if(isCountryClicked){
+    getCountryData();
+  } else {
+    getAllCountriesData();
+  }
+}, [isCountryClicked]);
 
   if (typeof test == 'undefined') {
     return (
@@ -68,8 +90,9 @@ import RequestService from "../services/RequestService";
   return (
     <pre>
        <div>
-        <button onClick={allCountriesHandler}>All Countries</button>
-        <button onClick={profileCountriesHandler}>Profile Countries</button>
+        <button id="allcountries" className='button-allcountries' onClick={getAllCountriesHandler}>All Countries</button>
+        <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
+        <button id="onecountry" onClick={oneCountryHandler}>Country</button>
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (
@@ -91,5 +114,5 @@ import RequestService from "../services/RequestService";
     </pre>
      
 );
-  }
+                      }
   export default HomePage;

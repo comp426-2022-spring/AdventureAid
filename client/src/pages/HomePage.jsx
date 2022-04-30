@@ -28,10 +28,10 @@ import RequestService from "../services/RequestService";
     function profileCountriesHandler() {
       setIsProfileCountries(true)
     }
-//  // handles first country button press
-//  function oneCountryHandler() {
-//   setIsProfileCountries(false)
-// }
+ // handles first country button press
+ function oneCountryHandler() {
+  setIsProfileCountries(false)
+}
     // recieves and sets state to hold profile countries
     function getProfileCountries() {
       RequestService.getUsername().then(user => {
@@ -54,6 +54,16 @@ import RequestService from "../services/RequestService";
         }
       })
     }
+function getCountryData(country){
+  RequestService.getCountriesAllCountriesData().getCountryData(country);
+ let countryInfoArray = country?.map(event => ({
+    //pull country data 
+    name: event.title,
+    description: event.description,
+}));
+//return countryInfoArray;
+  }
+
     useEffect(() => {
     if (isProfileCountries) {
       getProfileCountries()
@@ -72,7 +82,7 @@ import RequestService from "../services/RequestService";
        <div>
         <button id="allcountries" className='button-allcountries' onClick={getAllCountriesHandler}>All Countries</button>
         <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
-        {/* <button id="afghanistan" onClick={oneCountryHandler}>Afghanistan</button> */}
+        <button id="onecountry" onClick={oneCountryHandler}>{country}</button>
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (
@@ -93,5 +103,5 @@ import RequestService from "../services/RequestService";
     </pre>
      
 );
-  }
+                      }
   export default HomePage;

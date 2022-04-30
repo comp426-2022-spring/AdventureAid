@@ -3,95 +3,40 @@ import './HomePage.css';
 import RequestService from "../services/RequestService";
 import { Link } from "react-router-dom";
 import image from './PINKadven_aid_logo.png';
-
+import AllCountries from '../components/AllCountries';
+import ProfileCountries from '../components/ProfileCountries';
   function HomePage() {
-    const [test, setTest] = useState()
-    
     // false for all; true for profile
     const [isProfileCountries, setIsProfileCountries] = useState(false)
 
     // false for all; true for one country
     const [isCountryClicked, setIsCountryClicked] = useState(false);
 
-    // state for if new data is loading
-    const [isLoading, setIsLoading] = useState(false)
-    // recieves and sets state to hold all country names
-    function getAllCountriesData() {
-      RequestService.getAllCountriesData().then((res) => {
-        setTest(res.data);
-        console.log(res.data);
-      }).catch(error => {
-        console.log(error);
-      })
-    }
+    // state for the country
+    const [country, setCountry] = useState("")
+
     // handles allcountries button press
     function getAllCountriesHandler() {
       setIsProfileCountries(false)
+      setIsCountryClicked(false)
+      setCountry("")
     }
 
     // handles profile countries button press
     function profileCountriesHandler() {
       setIsProfileCountries(true)
+      setIsCountryClicked(false)
+      setCountry("")
     }
- // handles first country button press
- function oneCountryHandler() {
-  setIsCountryClicked(true);
-}
-    // recieves and sets state to hold profile countries
-    function getProfileCountries() {
-      RequestService.getUsername().then(user => {
-        if (user.data.isLoggedIn) {
-          RequestService.getUserCountries(user.data.username).then((res) => {
-            setTest(res.data);
-            console.log(res.data);
-          }).catch(error => {
-            console.log(error);
-          })
-        } else {
-          // if user is not logged in
-          console.log(user.data.message)
-          setTest([{
-              "names":{
-                "name":"not logged in"
-              }
-            }
-          ])
-        }
-      })
+
+    // handles first country button press
+    const clickCountryHandler = (country) => {
+      setIsCountryClicked(true)
+      setCountry(country)
     }
-function getCountryData(){
-  RequestService.getAllCountriesData().getCountryData().then((res => {
-    setTest(res.data);
-    console.log(res.data);
-  }).catch(error => {
-    console.log(error);
-  }))
-  }
-
-    useEffect(() => {
-    if (isProfileCountries) {
-      getProfileCountries()
-    } else {
-      getAllCountriesData()
-    }
-}, [isProfileCountries]);
-
-useEffect(() => {
-  if(isCountryClicked){
-    getCountryData();
-  } else {
-    getAllCountriesData();
-  }
-}, [isCountryClicked]);
-
-  if (typeof test == 'undefined') {
-    return (
-      <p>loading countries ...</p>
-    )
-  }
+    
   return (
     <pre>
-<<<<<<< HEAD
       <p style={{textAlign: "center"}}> <div class="tab">
                 <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
                 <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
@@ -102,31 +47,15 @@ useEffect(() => {
               <img src={image} width={400}/>
             </div>
        <div style={{textAlign: "center"}}>
-        <button className="button-2" onClick={allCountriesHandler}>All Countries</button>
+        <button className="button-2" onClick={getAllCountriesHandler}>All Countries</button>
         <button className="button-2" onClick={profileCountriesHandler}>Profile Countries</button>
-=======
-       <div>
-        <button id="allcountries" className='button-allcountries' onClick={getAllCountriesHandler}>All Countries</button>
-        <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
-        <button id="onecountry" onClick={oneCountryHandler}>Country</button>
->>>>>>> 0cfd01170395ab268a48b393f9046267c1943d24
-         {test.length == 0 ? (
-         <p>No matched countries</p>
-          ) : (
-            <div> 
-           <p> {
-                           test.map(
-                             t => 
-                             <li key = {t.names.name}>
-                                     <b>{t.names.name}</b>
-                                     <img width="20" height="10" src={'https://countryflagsapi.com/png/' + t.names.name}></img>
-                             </li>
-                         )
-                       }
-          </p>
-
-            </div>
-          )}
+      </div>
+      <div>
+         {isCountryClicked ? <p>clicked on: {country}</p> : 
+          <div>
+           {!isProfileCountries ? <AllCountries clickCountryHandler={clickCountryHandler}/> : <ProfileCountries clickCountryHandler={clickCountryHandler}/> }
+          </div>
+         }
         </div>
     </pre>
      

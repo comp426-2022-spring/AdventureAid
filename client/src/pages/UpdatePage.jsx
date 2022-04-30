@@ -32,6 +32,7 @@ function LoginPage() {
                             input.defaultValue=languages[i]
                         }
                         const li = document.createElement('li')
+                        li.name = "element"
                         li.appendChild(input)
                         list.appendChild(li)
                    }

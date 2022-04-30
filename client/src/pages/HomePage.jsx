@@ -12,7 +12,7 @@ import RequestService from "../services/RequestService";
     const [isLoading, setIsLoading] = useState(false)
     // recieves and sets state to hold all country names
     function getAllCountriesData() {
-      RequestService.getCountriesAllCountriesData().then((res) => {
+      RequestService.getAllCountriesData().then((res) => {
         setTest(res.data);
         console.log(res.data);
       }).catch(error => {

@@ -4,7 +4,7 @@ import TestButton from './components/TestButton.jsx';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
-import OneCountry from './pages/OneCountry';
+import UpdatePage from './pages/UpdatePage'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
@@ -13,10 +13,10 @@ function App() {
     <BrowserRouter>
       <Routes>
       
-        <Route path="" element= {<HomePage />} />
+        <Route path="/" element= {<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/country" element={<OneCountry />}/>
+        <Route path="/update" element={<UpdatePage />} />
 
       </Routes>
   </BrowserRouter>

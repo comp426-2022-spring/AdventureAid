@@ -1,5 +1,20 @@
 # a99-hamal API Documentation
 
+## Dependencies
+*list of all dependencies used in server / back-end*
+```
+NAME: VERSION
+
+"cors": "^2.8.5",
+"dotenv": "^16.0.0",
+"express": "^4.17.3",
+"jsonwebtoken": "^8.5.1",
+"minimist": "^1.2.6",
+"mongodb": "^4.5.0",
+"mongoose": "^6.3.0",
+"node-fetch": "^3.2.3"
+```
+
 ## Endpoints
 *if user is not logged in then the result for all endpoints will be:*
 ```

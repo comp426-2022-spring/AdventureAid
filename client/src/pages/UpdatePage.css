@@ -1,6 +1,3 @@
-
-
-
 /* CSS */
 .button-1 {
     background-color: #EA4C89;
@@ -38,5 +35,8 @@
     background-size: cover;
     resize: both;
     overflow: scroll;
+  }
+  .list{
+    list-style-type: none;
   }
   

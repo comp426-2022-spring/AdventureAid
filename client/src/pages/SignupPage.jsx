@@ -1,5 +1,6 @@
 import React, { useEffect, useState }from "react";
 import RequestService from "../services/RequestService";
+
 function LoginPage() {
     const [message, setMessage] = useState("")
 
@@ -43,11 +44,11 @@ function LoginPage() {
     }
 
     //handles logout button
-    function handleLogout() {
+    //function handleLogout() {
         // removes the token to un-authenticate user
-        localStorage.removeItem("token")
-        getUsername()
-    }
+        //localStorage.removeItem("token")
+        //getUsername()
+    //}
 
     return (
         <div>
@@ -64,7 +65,6 @@ function LoginPage() {
             <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}}required id="password" type="password" placeholder="Password"/>
             <div>
                 <button style={{textAlign: "center"}} className = "button-1" onClick={handleSignup}>Sign Up</button> 
-                <button style={{textAlign: "center"}} className = "button-1" onClick={handleLogout}>Log Out</button>
             </div>
             </p>
         </div>

@@ -54,9 +54,8 @@ function LoginPage() {
 
     return (
         <div>
-            <p style={{textAlign: "center"}}> 
-            <div class="tab">
-                <button class="tablinks" className="button-1" onclick={routeChange}>Home</button>
+            <p style={{textAlign: "center"}}> <div class="tab">
+                <button class="tablinks" className="button-1" onclick="openCity(event, 'London')">Home</button>
                 <button class="tablinks" className="button-1" onclick="openCity(event, 'Paris')">Sign Up</button>
                 <button class="tablinks" className="button-1" onclick="openCity(event, 'Tokyo')">My Profile</button>
             </div></p>

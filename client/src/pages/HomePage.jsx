@@ -1,6 +1,7 @@
 import React, { useEffect, useState  } from 'react';
 import './HomePage.css';
 import RequestService from "../services/RequestService";
+import { Link } from "react-router-dom";
 
   function HomePage() {
     const [test, setTest] = useState()
@@ -89,10 +90,15 @@ useEffect(() => {
   }
   return (
     <pre>
-       <div>
-        <button id="allcountries" className='button-allcountries' onClick={getAllCountriesHandler}>All Countries</button>
-        <button id="profilecountries" onClick={profileCountriesHandler}>Profile Countries</button>
-        <button id="onecountry" onClick={oneCountryHandler}>Country</button>
+      <p style={{textAlign: "center"}}> <div class="tab">
+                <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
+                <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
+                <Link to="/login"><button class="tablinks" className="button-1">Login</button></Link>
+                <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
+            </div></p>
+       <div style={{textAlign: "center"}}>
+        <button className="button-2" onClick={allCountriesHandler}>All Countries</button>
+        <button className="button-2" onClick={profileCountriesHandler}>Profile Countries</button>
          {test.length == 0 ? (
          <p>No matched countries</p>
           ) : (

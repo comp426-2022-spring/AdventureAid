@@ -1,5 +1,7 @@
 import React, { useEffect, useState }from "react";
+import { Link } from "react-router-dom";
 import RequestService from "../services/RequestService";
+
 function LoginPage() {
     const [message, setMessage] = useState("")
 
@@ -44,7 +46,7 @@ function LoginPage() {
 
     //handles logout button
     function handleLogout() {
-        // removes the token to un-authenticate user
+        //removes the token to un-authenticate user
         localStorage.removeItem("token")
         getUsername()
     }
@@ -52,9 +54,10 @@ function LoginPage() {
     return (
         <div>
             <p style={{textAlign: "center"}}> <div class="tab">
-                <button class="tablinks" className="button-1" onclick="openCity(event, 'London')">Home</button>
-                <button class="tablinks" className="button-1" onclick="openCity(event, 'Paris')">Sign Up</button>
-                <button class="tablinks" className="button-1" onclick="openCity(event, 'Tokyo')">My Profile</button>
+                <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
+                <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
+                <Link to="/login"><button class="tablinks" className="button-1">Login</button></Link>
+                <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
             </div></p>
             <h1 style={{textAlign: "center", padding: 20, fontSize: 100, color: "pink"}}>{message}</h1>
             <p style={{textAlign: "center"}}>

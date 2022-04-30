@@ -1,5 +1,8 @@
 import React, { useEffect, useState }from "react";
 import RequestService from "../services/RequestService";
+import { Link } from "react-router-dom";
+import './UpdatePage.css';
+
 function LoginPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [user, setUser] = useState()
@@ -12,6 +15,7 @@ function LoginPage() {
            // actions to take if user is logged in
            if (data.isLoggedIn) {
                setIsLoggedIn(true)
+               setMessage("Logged in")
                RequestService.getUser(data.username).then((res) => {
                    console.log(res.data)
                    setUser(res.data)
@@ -68,7 +72,7 @@ function LoginPage() {
 
         console.log(languages)
         RequestService.updateUser(user._id, name, password, email, malaria, hepatitisA, hepatitisB, yellowFever, tyfoid, dtp, cholera, languages)
-        setMessage("updated!")
+        setMessage("Updated!")
     }
 
     function addLanguageHandler() {
@@ -94,35 +98,40 @@ function LoginPage() {
     }
     if (!isLoggedIn || typeof user === 'undefined') {
         return (
-            <p>
+            <p style={{textAlign: "center", padding: 20, fontSize: 100, color: "pink"}}>
                 {message}
             </p>
         )
     }
     return (
         <div>
-            <p>{message}</p>
-            <div>
+             <p style={{textAlign: "center"}}> <div class="tab">
+                <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
+                <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
+                <Link to="/login"><button class="tablinks" className="button-1">Login</button></Link>
+                <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
+            </div></p>
+            <p style={{textAlign: "center", padding: 10, fontSize: 100, color: "pink"}}>{message}</p>
+            <div style={{textAlign: "center", marginBottom: 20, fontSize: 30}}>
                 <strong htmlFor="username">Username: {user._id}</strong>
             </div>
-            <div>
-                <label htmlFor="email">Email</label>
-                <input defaultValue={user.email} required id="email" type="email" placeholder="new email"/>
+            <div style={{textAlign: "center"}}>
+                <label style={{marginRight: 10, marginLeft: 10}} htmlFor="Email">Email</label>
+                <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} defaultValue={user.email} required id="email" type="email" placeholder="new email"/>
             </div>
                 
-            <div>
-                <label htmlFor="name">Name</label>
-                <input defaultValue={user.name} required id="name" type="name" placeholder="new name"/>
+            <div style={{textAlign: "center"}} >
+                <label style={{marginRight: 10, marginLeft: 10}} htmlFor="name">Name</label>
+                <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} defaultValue={user.name} required id="name" type="name" placeholder="new name"/>
             </div>
             
-            <div>
-                <label htmlFor="password">Password</label>
-                <input defaultValue={user.password} required id="password" type="password" placeholder="new password"/>
+            <div style={{textAlign: "center"}}>
+                <label style={{marginRight: 10, marginLeft: 10}} htmlFor="password">Password</label>
+                <input style={{textAlign: "center", marginBottom: 50, marginRight: 10, borderRadius: 10, borderColor: "gray"}} defaultValue={user.password} required id="password" type="password" placeholder="new password"/>
             </div>
 
-            <label>Vaccinations:</label>
-            <div>
-                
+            <div style={{textAlign: "center"}}>
+                <label style={{marginRight: 10, marginLeft: 10}} >Vaccinations:</label>
                 <label htmlFor="malaria"> Malaria</label>
                 <input defaultChecked={user.vaccinations.malaria} id="malaria" type="checkbox"></input>
 
@@ -144,13 +153,18 @@ function LoginPage() {
                 <label htmlFor="cholera"> Cholera</label>
                 <input  defaultChecked={user.vaccinations.cholera} id="cholera" type="checkbox"></input>
             </div>
+
+            <div style={{textAlign: "center", marginTop: 20}}>
             <label>Languages:</label>
-            <div id='languages'>
-                <button onClick={addLanguageHandler}>Add another language?</button>
-                <button onClick={removeLanguageHandler}>Remove Language?</button>
             </div>
 
-            <button onClick={handleUpdate}>Update</button> 
+            <div style={{textAlign: "center"}} id='languages'>
+                <button style={{marginBottom: 10}} className = "button-1" onClick={addLanguageHandler}>Add another language?</button>
+                <button style={{marginBottom: 10}} className = "button-1" onClick={removeLanguageHandler}>Remove Language?</button>
+            </div>
+            <div style={{textAlign: "center"}}>
+            <button style={{marginBottom: 20}}className = "button-1" onClick={handleUpdate}>Update</button> 
+            </div>
         </div>
     )
 }

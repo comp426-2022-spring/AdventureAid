@@ -79,6 +79,7 @@ import RequestService from "../services/RequestService";
                              t => 
                              <li key = {t.names.name}>
                                      <b>{t.names.name}</b>
+                                     <img width="20" height="10" src={'https://countryflagsapi.com/png/' + t.names.name}></img>
                              </li>
                          )
                        }

@@ -47,6 +47,15 @@ function ProfileCountries (props) {
             </div>
         )
     }
+    if (data.length == 0) {
+        return (
+            <Card>
+                <div style={{textAlign: "center", padding:25, fontSize:40}}>
+               Update your profile to find matched countries!
+                </div>
+            </Card>
+        )
+    }
     return ( 
         <div>
             <div style={{textAlign: "center"}}> 

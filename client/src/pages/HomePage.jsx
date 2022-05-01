@@ -37,15 +37,9 @@ import ClickedCountry from './ClickedCountry';
     
   return (
     <pre>
-      <p style={{textAlign: "center"}}> <div class="tab">
-                <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
-                <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
-                <Link to="/login"><button class="tablinks" className="button-1">Login</button></Link>
-                <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
-            </div></p>
-            <div style={{textAlign: "center", marginTop: 20, marginBottom: 20}} >
-              <img src={image} width={400}/>
-            </div>
+        <div style={{textAlign: "center", marginTop: 20, marginBottom: 20}} >
+          <img src={image} width={400}/>
+        </div>
        <div style={{textAlign: "center"}}>
         <button className="button-2" onClick={getAllCountriesHandler}>All Countries</button>
         <button className="button-2" onClick={profileCountriesHandler}>Profile Countries</button>

@@ -2,8 +2,11 @@ import React from "react";
 import { useEffect, useState} from "react"
 import RequestService from "../services/RequestService";
 import CountryButton from "./CountryButton";
+import Card from "./Card";
+import LoadingSpinner from "./LoadingSpinner";
 function ProfileCountries (props) {
     const [data, setData] = useState()
+    const [isLoggedIn, setIsLoggedIn] = useState(true)
 
     // recieves and sets state to hold profile countries
     function getProfileCountries() {
@@ -18,12 +21,8 @@ function ProfileCountries (props) {
           } else {
             // if user is not logged in
             console.log(user.data.message)
-            setData([{
-                "names":{
-                  "name":"not logged in"
-                }
-              }
-            ])
+            setIsLoggedIn(false)
+            
           }
         })
       }
@@ -32,24 +31,34 @@ function ProfileCountries (props) {
           getProfileCountries()
       }, [])
 
-    if (typeof data === 'undefined') {
+    if (!isLoggedIn) {
         return (
-            <p>
-                loading...
-            </p>
+            <Card>
+                <div style={{textAlign: "center", padding:25, fontSize:40}}>
+                Log in to view your matched countries!
+                </div>
+            </Card>
         )
     }
-
+    if (typeof data === 'undefined') {
+        return (
+            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height:100}}>
+                <LoadingSpinner />
+            </div>
+        )
+    }
     return ( 
         <div>
             <div style={{textAlign: "center"}}> 
-           <p> {
+           <ul style={{display: 'flex', flexWrap: 'wrap', alignItems:'center', justifyContent:'center'}}> {
                            data.map(
                              country => 
-                             <CountryButton clickCountryHandler={props.clickCountryHandler} key={country.names.name} country={country.names.name}/>
+                             <li key = {country.names.name} style={{padding:10, textAlign:"center"}}>
+                                <CountryButton clickCountryHandler={props.clickCountryHandler} key={country.names.name} country={country.names.name}/>
+                             </li>
                          )
                        }
-          </p>
+          </ul>
 
             </div>
         </div>

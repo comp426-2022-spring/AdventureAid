@@ -2,6 +2,8 @@ import React, { useEffect, useState }from "react";
 import RequestService from "../services/RequestService";
 import Card from "../components/Card";
 import LoadingSpinner from "../components/LoadingSpinner";
+import TempGraph from "../components/TempGraph";
+import PrecGraph from '../components/PrecGraph'
 function ClickedCountry(props) {
     const [country, setCountry] = useState()
     const names = ['Bruce', 'Clark', 'Diana']
@@ -35,7 +37,7 @@ function ClickedCountry(props) {
                 <b>Languages: </b>
                 {country.language.map((lang, i) => {
                   return (
-                    <span>
+                    <span key={lang.language}>
                       <span>{lang.language}</span>
                       {lang.official == 'Yes' && <span> (Official)</span>}
                       {i != country.language.length - 1 && <span>, </span>}
@@ -66,7 +68,8 @@ function ClickedCountry(props) {
 
              <div>
                <b>Advice: </b>
-               <span>{country.advise.UA.advise}</span>
+               {(typeof country !== 'undefined' && typeof country.advise !== 'undefined' && typeof country.advise.UA !== 'undefined') ? <span>{country.advise.UA.advise}</span> :
+               <span>No advice</span>}
              </div>
 
              <div>
@@ -83,7 +86,7 @@ function ClickedCountry(props) {
                <b>Plugs: </b>
                {country.electricity.plugs.map((name, i) => {
                   return (
-                    <span>
+                    <span key={name}>
                       <span>Type {name}</span>
                       {i != country.electricity.plugs.length - 1 && <span>, </span>}
                     </span>
@@ -95,12 +98,20 @@ function ClickedCountry(props) {
              <b>Neighbors: </b>
              {country.neighbors.map((name, i) => {
                   return (
-                    <span>
+                    <span key={name.name}>
                       <span>{name.name}</span>
                       {i != country.neighbors.length - 1 && <span>, </span>}
                     </span>
                   )
                 })}
+             </div>
+
+             <div>
+               <TempGraph months={country.weather}/>
+             </div>
+
+             <div>
+               <PrecGraph months={country.weather}/>
              </div>
            </Card>
          </div>

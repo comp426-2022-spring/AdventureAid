@@ -10,8 +10,6 @@ function ClickedCountry(props) {
         RequestService.getCountryData(props.country).then((res) => {
           setCountry(res.data);
           console.log(res.data);
-          const myObject = JSON.parse(country)
-          console.log(myObject)
         }).catch(error => {
           console.log(error);
         })

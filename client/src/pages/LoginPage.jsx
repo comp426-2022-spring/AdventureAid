@@ -2,7 +2,7 @@ import React, { useEffect, useState }from "react";
 import RequestService from "../services/RequestService";
 import { Link } from "react-router-dom";
 import './LoginPage.css'; 
-
+import TextBacking from "../components/TextBacking";
 const backg = new URL('https://www.teahub.io/viewwp/TJiwii_wallpaper-pink-blue-gradient-linear-light-sky-blue/');
 
 function LoginPage() {
@@ -59,8 +59,11 @@ function LoginPage() {
     if (isLoggedIn) {
         return (
             <div>
-                 <h1 style={{textAlign: "center", padding: 20, fontSize: 100, color: "pink"}}>Logged in as: {message}</h1>
-                <div style={{textAlign: "center"}}>
+                <TextBacking>
+                <h1 >Logged in as: {message}</h1>
+                </TextBacking>
+                 
+                <div style={{textAlign: "center", marginTop:"10px"}}>
                     <button style={{textAlign: "center"}} className = "button-1" onClick={handleLogout}>Log Out</button>
                 </div>
             </div>
@@ -69,11 +72,17 @@ function LoginPage() {
 
     return (
         <div>
-            <h2 style={{textAlign: "center", padding: 20, fontSize: 100, color: "pink"}}>{message}</h2>
+            <TextBacking>
+            <h2 >{message}</h2>
+            </TextBacking>
+            
             <p style={{textAlign: "center"}}>
-            <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} required id="username" type="username" placeholder="Username"/>
-            <input  style={{textAlign: "center", marginBottom: 10, borderRadius: 10}} required id="password" type="password" placeholder="Password"/>
-            <div>
+                <TextBacking>
+                    <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} required id="username" type="username" placeholder="Username"/>
+                    <input  style={{textAlign: "center", marginBottom: 10, borderRadius: 10}} required id="password" type="password" placeholder="Password"/>
+                </TextBacking>
+            
+            <div style={{marginTop:"10px"}}>
             <button style={{textAlign: "center"}} className = "button-1" onClick={handleLogin}>Log In</button> 
             <button style={{textAlign: "center"}} className = "button-1" onClick={handleLogout}>Log Out</button>
             </div>

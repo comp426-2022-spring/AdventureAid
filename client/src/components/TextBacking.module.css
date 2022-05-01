@@ -1,3 +1,15 @@
 .textbacking {
-    
+        font-weight: normal;
+        text-shadow: 0 -1px rgba(0,0,0,0.6);
+        font: inherit;
+        line-height: 40px;
+        background: #F082AC;
+        border: thin solid #fff;
+        color: white;
+        border-radius: 10px;  
+        margin: auto;
+        width: min-content;
+        padding: 10px;
+        white-space: nowrap; 
+        border-color: white;
 }

@@ -7,6 +7,7 @@ const backg = new URL('https://www.teahub.io/viewwp/TJiwii_wallpaper-pink-blue-g
 
 function LoginPage() {
     const [message, setMessage] = useState("")
+    const [isLoggedIn, setIsLoggedIn] = useState()
 
     // Gets username if user is logged in 
      const getUsername = async () => {
@@ -15,6 +16,7 @@ function LoginPage() {
 
             // actions to take if user is logged in
             if (data.isLoggedIn) {
+                setIsLoggedIn(true)
                 setMessage(data.username)
                 document.querySelector('#username').value = ""
                 document.querySelector('#password').value = ""
@@ -27,7 +29,7 @@ function LoginPage() {
 
     useEffect(() => {
         getUsername()
-    }, [])
+    }, [isLoggedIn])
 
     // handles login button
     const handleLogin = async () => {
@@ -40,6 +42,7 @@ function LoginPage() {
             setMessage(res.data.message)
         } else {
             getUsername()
+            setIsLoggedIn(true)
         }
         
     }
@@ -48,9 +51,20 @@ function LoginPage() {
     function handleLogout() {
         // removes the token to un-authenticate user
         localStorage.removeItem("token")
-        
+        setIsLoggedIn(false)
         // call to get username to update page if something changes
         getUsername()
+    }
+
+    if (isLoggedIn) {
+        return (
+            <div>
+                 <h1 style={{textAlign: "center", padding: 20, fontSize: 100, color: "pink"}}>Logged in as: {message}</h1>
+                <div style={{textAlign: "center"}}>
+                    <button style={{textAlign: "center"}} className = "button-1" onClick={handleLogout}>Log Out</button>
+                </div>
+            </div>
+        )
     }
 
     return (

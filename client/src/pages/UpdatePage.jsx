@@ -6,7 +6,7 @@ import './UpdatePage.css';
 function LoginPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [user, setUser] = useState()
-    const [message, setMessage] = useState()
+    const [message, setMessage] = useState("")
 
     const setFields = async () => {
         await RequestService.getUsername().then((res) => {
@@ -41,7 +41,7 @@ function LoginPage() {
                })
            }
            else 
-               setMessage("Not logged in")
+               setMessage("Log in to update!")
        })
     }
 
@@ -82,7 +82,7 @@ function LoginPage() {
     function handleDelete() {
         RequestService.deleteUser(user._id)
         setIsLoggedIn(false)
-        setMessage("Not logged in")
+        setMessage("Log in to update!")
         localStorage.removeItem('token')
     }
 
@@ -116,10 +116,14 @@ function LoginPage() {
     }
     return (
         <div>
-            <p style={{textAlign: "center", padding: 10, fontSize: 100, color: "pink"}}>{message}</p>
             <div style={{textAlign: "center", marginBottom: 20, fontSize: 30}}>
                 <strong htmlFor="username">Username: {user._id}</strong>
             </div>
+            {message != 'Log in to update!' && message != '' && message != "Logged in" && 
+                <p style={{textAlign: "center", padding: 10, fontSize: 25, color: "red"}}>
+                {message}
+                </p>
+            }
             <div style={{textAlign: "center"}}>
                 <label style={{marginRight: 10, marginLeft: 10}} htmlFor="Email">Email</label>
                 <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} defaultValue={user.email} required id="email" type="email" placeholder="new email"/>

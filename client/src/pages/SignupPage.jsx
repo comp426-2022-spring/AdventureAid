@@ -4,7 +4,7 @@ import RequestService from "../services/RequestService";
 
 function LoginPage() {
     const [message, setMessage] = useState("")
-
+    const [isLoggedIn, setIsLoggedIn] = useState()
     // Gets username if user is logged in 
      const getUsername = async () => {
          await RequestService.getUsername().then((res) => {
@@ -12,7 +12,8 @@ function LoginPage() {
 
             // actions to take if user is logged in
             if (data.isLoggedIn) {
-                setMessage("Logged in as " + data.username)
+                setIsLoggedIn(true)
+                setMessage("Logged in as: " + data.username)
                 document.querySelector('#username').value = ""
                 document.querySelector('#password').value = ""
                 document.querySelector('#name').value = ""
@@ -26,7 +27,7 @@ function LoginPage() {
 
     useEffect(() => {
         getUsername()
-    }, [])
+    }, [isLoggedIn])
 
     // handles login button
     const handleSignup = async () => {
@@ -48,12 +49,22 @@ function LoginPage() {
     function handleLogout() {
         //removes the token to un-authenticate user
         localStorage.removeItem("token")
+        setIsLoggedIn(false)
         getUsername()
     }
-
+    if (isLoggedIn) {
+        return (
+            <div>
+                 <h1 style={{textAlign: "center", padding: 20, fontSize: 100, color: "pink"}}>{message}</h1>
+                <div style={{textAlign: "center"}}>
+                    <button style={{textAlign: "center"}} className = "button-1" onClick={handleLogout}>Log Out</button>
+                </div>
+            </div>
+        )
+    }
     return (
         <div>
-            <h1 style={{textAlign: "center", padding: 20, fontSize: 100, color: "pink"}}>{message}</h1>
+            <p style={{textAlign: "center", padding: 10, fontSize: 50, color: "pink"}}>{message}</p>
             <p style={{textAlign: "center"}}>
             <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} required id="username" type="username" placeholder="Username"/>
             <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} required id="email" type="email" placeholder="Email"/>

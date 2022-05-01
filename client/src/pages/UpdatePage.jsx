@@ -19,18 +19,15 @@ function LoginPage() {
                RequestService.getUser(data.username).then((res) => {
                    console.log(res.data)
                    setUser(res.data)
-
                    console.log(res.data.languages)
                    const languages = res.data.languages
                    const list = document.createElement('ul')
                    list.id = 'list'
 
-                   for (let i = 0; i < languages.length - 1; i++) {
+                   for (let i = 0; i < languages.length; i++) {
                         const input = document.createElement('input')
                         input.type = 'text'
-                        if (i < languages.length) {
                             input.defaultValue=languages[i]
-                        }
                         const li = document.createElement('li')
                         li.appendChild(input)
                         list.appendChild(li)

@@ -6,32 +6,27 @@ import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
 import UpdatePage from './pages/UpdatePage'
 import ClickedCountry from './pages/ClickedCountry'
-import Card from './components/Card';
-
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
-
+import Navbar from './components/Navbar';
+import Layout from './Layout';
 function App() {
   return (
-    <BrowserRouter>
-    <Card>
-      <div style={{textAlign: "center"}}> <div class="tab">
-                  <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
-                  <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
-                  <Link to="/login"><button class="tablinks" className="button-1">Login</button></Link>
-                  <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
-        </div></div>
-    </Card>
-      
-      <Routes>
-      
+    <div >
+      <BrowserRouter>
+      <Layout>
+        <Routes>
+
         <Route path="/" element= {<HomePage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/update" element={<UpdatePage />} />
         <Route path="/country" element={<ClickedCountry />} />
 
-      </Routes>
+        </Routes>
+      </Layout>
   </BrowserRouter>
+    </div>
+    
   );
 }
 

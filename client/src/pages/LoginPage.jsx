@@ -76,7 +76,7 @@ function LoginPage() {
             <h2 >{message}</h2>
             </TextBacking>
             
-            <p style={{textAlign: "center"}}>
+            <div style={{textAlign: "center"}}>
                 <TextBacking>
                     <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} required id="username" type="username" placeholder="Username"/>
                     <input  style={{textAlign: "center", marginBottom: 10, borderRadius: 10}} required id="password" type="password" placeholder="Password"/>
@@ -86,7 +86,7 @@ function LoginPage() {
             <button style={{textAlign: "center"}} className = "button-1" onClick={handleLogin}>Log In</button> 
             <button style={{textAlign: "center"}} className = "button-1" onClick={handleLogout}>Log Out</button>
             </div>
-            </p>
+            </div>
         </div>
     );
 }

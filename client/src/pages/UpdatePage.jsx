@@ -82,7 +82,7 @@ function LoginPage() {
     function handleDelete() {
         RequestService.deleteUser(user._id)
         setIsLoggedIn(false)
-        setMessage("Log in to update!")
+        setMessage("User deleted :(")
         localStorage.removeItem('token')
     }
 

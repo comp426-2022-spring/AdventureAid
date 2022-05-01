@@ -10,6 +10,8 @@ function ClickedCountry(props) {
         RequestService.getCountryData(props.country).then((res) => {
           setCountry(res.data);
           console.log(res.data);
+          const myObject = JSON.parse(country)
+          console.log(myObject)
         }).catch(error => {
           console.log(error);
         })
@@ -20,13 +22,13 @@ function ClickedCountry(props) {
       })
 
       return(
-          <pre> 
-              <div>
-              <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
-                {JSON.stringify(country)}
-            </div>
-          </pre>
-      )
+        <div>
+        {JSON.stringify(country)}
+        <b>{country.names.name}</b>
+        </div>
+);
 }
 
+
+// {JSON.stringify(country)}
 export default ClickedCountry;

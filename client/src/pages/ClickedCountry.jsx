@@ -29,7 +29,7 @@ function ClickedCountry(props) {
         )
       }
       return(
-         <div style={{padding:"50px", textAlign:"center"}} >
+         <div style={{padding:"50px", textAlign:"center", alignItems:"center"}} >
            <Card>
              <h1>{country.names.name}</h1>
              <h3>{country.names.full}</h3>
@@ -106,11 +106,11 @@ function ClickedCountry(props) {
                 })}
              </div>
 
-             <div>
+             <div style={{width:"40%", marginLeft:"auto", marginRight:"auto"}}>
                <TempGraph months={country.weather}/>
              </div>
 
-             <div>
+             <div style={{width:"40%", marginLeft:"auto", marginRight:"auto"}}>
                <PrecGraph months={country.weather}/>
              </div>
            </Card>

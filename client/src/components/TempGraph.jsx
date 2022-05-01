@@ -26,63 +26,56 @@ function TempGraph(props) {
     const average = Object.values(props.months).map((value) => value.tAvg * 9/5 + 32)
     const min = Object.values(props.months).map((value) => value.tMax * 9/5 + 32)
     const max = Object.values(props.months).map((value) => value.tMin * 9/5 + 32)
-    console.log(max)
     const options = {
         responsive: true,
         plugins: {
           legend: {
             position: 'top',
-          },
-          scales: {
-            yAxes: {
-                title: {
-                    display: true,
-                    text: "yAxisTitle",
-                    font: {
-                        size: 15
-                    }
-                },
-                ticks: {
-                    precision: 0
-                }
-            },
-            xAxes: {
-                title: {
-                    display: true,
-                    text: "xAxisTitle",
-                    font: {
-                        size: 15
-                    }
-                }
-            }
-        },     
+          },  
           title: {
             display: true,
             text: 'Temperature by Month',
           },
         },
+        scales: {
+          yAxis: {
+              title: {
+                  display: true,
+                  text: "Temperature in Farenheight",
+                  font: {
+                      size: 10
+                  },
+              }
+          },
+          xAxis: {
+            title: {
+              display: true,
+              text: "Months",
+              font: {
+                  size: 10
+              },
+          }
+          }
+        }
       };
 
     const data = {
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         datasets: [
           {
-            label: "Average Temp",
+            label: "Average Temperature",
             data: average,
-            backgroundColor: "rgba(75,192,192,0.2)",
-            borderColor: "rgba(75,192,192,1)"
+            borderColor: "#acf082"
           },
           {
-            label: "Min Temp",
+            label: "Minimum Temperature",
             data: min,
-            fill: false,
-            borderColor: "#742774"
+            borderColor: "#82acf0"
           },
           {
-            label: "Max Temp",
+            label: "Maximum Temperature",
             data: max,
-            fill: false,
-            borderColor: "#4ce665"
+            borderColor: "#f082ac"
           }
         ]
       };

@@ -6,6 +6,7 @@ import UpdatePage from './pages/UpdatePage'
 import ClickedCountry from './pages/ClickedCountry'
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Layout from './Layout';
+
 function App() {
   return (
     <div >

@@ -18,8 +18,8 @@ function LoginPage() {
             if (data.isLoggedIn) {
                 setIsLoggedIn(true)
                 setMessage(data.username)
-                document.querySelector('#username').value = ""
-                document.querySelector('#password').value = ""
+                // document.querySelector('#username').value = ""
+                // document.querySelector('#password').value = ""
                 // redirect to new page?
             }
             else 

@@ -19,7 +19,6 @@ function LoginPage() {
                RequestService.getUser(data.username).then((res) => {
                    console.log(res.data)
                    setUser(res.data)
-
                    console.log(res.data.languages)
                    const languages = res.data.languages
                    const list = document.createElement('ul')

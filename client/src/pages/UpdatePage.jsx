@@ -122,7 +122,9 @@ function LoginPage() {
             </div>
             {message != 'Log in to update!' && message != '' && message != "Logged in" && 
                 <TextBacking style={{textAlign: "center", fontSize: 25, color: "red"}}>
-                {message}
+                    <div style={{color:'purple'}}>
+                    {message}
+                    </div>
                 </TextBacking>
             }
             <div style={{textAlign: "center", marginTop:"10px"}}>

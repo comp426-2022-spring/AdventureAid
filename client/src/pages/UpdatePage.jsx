@@ -7,7 +7,7 @@ function LoginPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [user, setUser] = useState()
     const [message, setMessage] = useState()
-    const [languages, setLanguages] = useState()
+
     const setFields = async () => {
         await RequestService.getUsername().then((res) => {
            const data = res.data
@@ -25,7 +25,7 @@ function LoginPage() {
                    const list = document.createElement('ul')
                    list.id = 'list'
 
-                   for (let i = 0; i < languages.length + 1; i++) {
+                   for (let i = 0; i < languages.length - 1; i++) {
                         const input = document.createElement('input')
                         input.type = 'text'
                         if (i < languages.length) {
@@ -39,7 +39,6 @@ function LoginPage() {
                    insert.prepend(list)
 
                })
-               // redirect to new page?
            }
            else 
                setMessage("Not logged in")
@@ -66,19 +65,31 @@ function LoginPage() {
         const children = list.children
 
         let languages = []
+        const availableLanguages = new Set(['Afar','Albanian','Amerindian_languages','Amharic','Arabic','Armenian','Aymara','Azerbaijani','Belarusian','Bengali','Bosnian','Bulgarian','Cantonese','Catalan','Chinese','Criuolo','Croatian','Czech','Danish','Dutch','Dzongkha','English','Estonian','Fijian','Finnish','French','Fula','Gan','Georgian','German','Greek','Gujarati','Hindi','Hungarian','Icelandic','Italian','Kalanga','Kashmiri','Khmer','Kikongo','Kingwana','Kirundi','Lingala','Malay','Malayalam','Mandinka','Marathi','Minnan','Monokutuba','Oriya','Oromo','Pashto','Persian','Portuguese','Quechua','Romany','Russian','Sango','Sekgalagadi','Serbian','Shanghaiese','Shikomoro','Slovene','Somali','Spanish','Sudanic','Swahili','Swedish','Tigrinya','Tshiluba','Tswana','Turkish','Urdu','Wolof','Xiang','Yoruba'])
         for (const child of children) {
-            languages.push(child.firstChild.value)
+            const lang = child.firstChild.value
+            if (!availableLanguages.has(lang)) {
+                setMessage("Not a valid language")
+                return
+            }
+            languages.push(lang)
         }
 
-        console.log(languages)
         RequestService.updateUser(user._id, name, password, email, malaria, hepatitisA, hepatitisB, yellowFever, tyfoid, dtp, cholera, languages)
         setMessage("Updated!")
+    }
+
+    function handleDelete() {
+        RequestService.deleteUser(user._id)
+        setIsLoggedIn(false)
+        setMessage("Not logged in")
+        localStorage.removeItem('token')
     }
 
     function addLanguageHandler() {
         const availableLanguages = new Set(['Afar','Albanian','Amerindian_languages','Amharic','Arabic','Armenian','Aymara','Azerbaijani','Belarusian','Bengali','Bosnian','Bulgarian','Cantonese','Catalan','Chinese','Criuolo','Croatian','Czech','Danish','Dutch','Dzongkha','English','Estonian','Fijian','Finnish','French','Fula','Gan','Georgian','German','Greek','Gujarati','Hindi','Hungarian','Icelandic','Italian','Kalanga','Kashmiri','Khmer','Kikongo','Kingwana','Kirundi','Lingala','Malay','Malayalam','Mandinka','Marathi','Minnan','Monokutuba','Oriya','Oromo','Pashto','Persian','Portuguese','Quechua','Romany','Russian','Sango','Sekgalagadi','Serbian','Shanghaiese','Shikomoro','Slovene','Somali','Spanish','Sudanic','Swahili','Swedish','Tigrinya','Tshiluba','Tswana','Turkish','Urdu','Wolof','Xiang','Yoruba'])
         let list  = document.querySelector('#list')
-        if (availableLanguages.has(list.lastChild.firstChild.value)) {
+        if (list.childElementCount == 0 || availableLanguages.has(list.lastChild.firstChild.value)) {
             let newEl = document.createElement('li')
             let newLang = document.createElement('input')
             newEl.appendChild(newLang)
@@ -157,7 +168,8 @@ function LoginPage() {
                 <button style={{marginBottom: 10}} className = "button-1" onClick={removeLanguageHandler}>Remove Language?</button>
             </div>
             <div style={{textAlign: "center"}}>
-            <button style={{marginBottom: 20}}className = "button-1" onClick={handleUpdate}>Update</button> 
+                <button style={{marginBottom: 20}}className = "button-1" onClick={handleUpdate}>Update</button> 
+                <button style={{marginBottom: 20}}className = "button-1" onClick={handleDelete}>Delete</button> 
             </div>
         </div>
     )

@@ -24,12 +24,10 @@ function LoginPage() {
                    const list = document.createElement('ul')
                    list.id = 'list'
 
-                   for (let i = 0; i < languages.length - 1; i++) {
+                   for (let i = 0; i < languages.length; i++) {
                         const input = document.createElement('input')
                         input.type = 'text'
-                        if (i < languages.length) {
                             input.defaultValue=languages[i]
-                        }
                         const li = document.createElement('li')
                         li.appendChild(input)
                         list.appendChild(li)

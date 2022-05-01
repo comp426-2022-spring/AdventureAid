@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState} from "react"
 import RequestService from "../services/RequestService";
 import CountryButton from "./CountryButton";
+import LoadingSpinner from "./LoadingSpinner";
 function AllCountries (props) {
     const [data, setData] = useState()
 
@@ -20,23 +21,24 @@ function AllCountries (props) {
 
     if (typeof data === 'undefined') {
         return (
-            <p>
-                loading...
-            </p>
+            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height:100}}>
+                <LoadingSpinner />
+            </div>
         )
     }
 
     return ( 
         <div>
             <div style={{textAlign: "center"}}> 
-           <p> {
-                           data.map(
+                <ul style={{display: 'flex', flexWrap: 'wrap', alignItems:'center', justifyContent:'center'}}> {
+                    data.map(
                              country => 
-                             <CountryButton clickCountryHandler={props.clickCountryHandler} key={country} country={country}/>
-                         )
-                       }
-          </p>
-
+                             <li key = {country} style={{padding:10, textAlign:"center"}}>
+                                <CountryButton clickCountryHandler={props.clickCountryHandler} key={country} country={country}/>
+                             </li>
+                            )
+                     }
+                </ul>
             </div>
         </div>
 

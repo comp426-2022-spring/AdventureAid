@@ -7,11 +7,17 @@ import HomePage from './pages/HomePage';
 import UpdatePage from './pages/UpdatePage'
 import ClickedCountry from './pages/ClickedCountry'
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 
 function App() {
   return (
     <BrowserRouter>
+    <div style={{textAlign: "center"}}> <div class="tab">
+                <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
+                <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
+                <Link to="/login"><button class="tablinks" className="button-1">Login</button></Link>
+                <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
+      </div></div>
       <Routes>
       
         <Route path="/" element= {<HomePage />} />

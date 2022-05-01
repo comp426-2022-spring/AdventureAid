@@ -53,12 +53,6 @@ function LoginPage() {
 
     return (
         <div>
-            <p style={{textAlign: "center"}}> <div class="tab">
-                <Link to="/"><button class="tablinks" className="button-1">Home</button></Link>
-                <Link to="/signup"><button class="tablinks" className="button-1">Sign Up</button></Link>
-                <Link to="/login"><button class="tablinks" className="button-1">Login</button></Link>
-                <Link to="/update"><button class="tablinks" className="button-1">Update</button></Link>
-            </div></p>
             <h1 style={{textAlign: "center", padding: 20, fontSize: 100, color: "pink"}}>{message}</h1>
             <p style={{textAlign: "center"}}>
             <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} required id="username" type="username" placeholder="Username"/>

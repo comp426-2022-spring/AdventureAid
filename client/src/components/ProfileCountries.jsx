@@ -4,6 +4,7 @@ import RequestService from "../services/RequestService";
 import CountryButton from "./CountryButton";
 import Card from "./Card";
 import LoadingSpinner from "./LoadingSpinner";
+import TextBacking from "./TextBacking";
 function ProfileCountries (props) {
     const [data, setData] = useState()
     const [isLoggedIn, setIsLoggedIn] = useState(true)
@@ -33,11 +34,14 @@ function ProfileCountries (props) {
 
     if (!isLoggedIn) {
         return (
-            <Card>
+          <div style={{marginTop:"10px"}}>
+              <TextBacking>
                 <div style={{textAlign: "center", padding:25, fontSize:40}}>
                 Log in to view your matched countries!
                 </div>
-            </Card>
+            </TextBacking>
+          </div>
+          
         )
     }
     if (typeof data === 'undefined') {
@@ -49,11 +53,13 @@ function ProfileCountries (props) {
     }
     if (data.length == 0) {
         return (
-            <Card>
+          <div style={{marginTop:"10px"}}>
+            <TextBacking>
                 <div style={{textAlign: "center", padding:25, fontSize:40}}>
                Update your profile to find matched countries!
                 </div>
-            </Card>
+            </TextBacking>
+          </div>
         )
     }
     return ( 

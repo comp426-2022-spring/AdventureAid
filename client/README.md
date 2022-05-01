@@ -15,7 +15,9 @@ NAME: VERSION
 "react-dom": "^17.0.2",
 "react-router-dom": "^6.3.0",
 "react-scripts": "5.0.0",
-"web-vitals": "^2.1.4"
+"web-vitals": "^2.1.4",
+"react-chartjs-2": "^4.1.0",
+ "chart.js": "^3.7.1"
 ```
 
 ## Available Scripts

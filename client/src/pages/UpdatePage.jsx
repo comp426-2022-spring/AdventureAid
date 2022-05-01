@@ -2,7 +2,7 @@ import React, { useEffect, useState }from "react";
 import RequestService from "../services/RequestService";
 import { Link } from "react-router-dom";
 import './UpdatePage.css';
-
+import TextBacking from '../components/TextBacking'
 function LoginPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [user, setUser] = useState()
@@ -106,37 +106,51 @@ function LoginPage() {
     }
     if (!isLoggedIn || typeof user === 'undefined') {
         return (
-            <p style={{textAlign: "center", padding: 20, fontSize: 100, color: "pink"}}>
+            <TextBacking >
                 {message}
-            </p>
+            </TextBacking>
         )
     }
     return (
         <div>
-            <div style={{textAlign: "center", marginBottom: 20, fontSize: 30}}>
+            <div style={{textAlign: "center", alignItems:"center", marginBottom: 20, fontSize: 30}}>
+                <TextBacking>
                 <strong htmlFor="username">Username: {user._id}</strong>
+                </TextBacking>
+                
+                
             </div>
             {message != 'Log in to update!' && message != '' && message != "Logged in" && 
-                <p style={{textAlign: "center", padding: 10, fontSize: 25, color: "red"}}>
-                {message}
-                </p>
+                <TextBacking style={{textAlign: "center", fontSize: 25, color: "red"}}>
+                    <div style={{color:'purple'}}>
+                    {message}
+                    </div>
+                </TextBacking>
             }
-            <div style={{textAlign: "center"}}>
-                <label style={{marginRight: 10, marginLeft: 10}} htmlFor="Email">Email</label>
-                <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} defaultValue={user.email} required id="email" type="email" placeholder="new email"/>
+            <div style={{textAlign: "center", marginTop:"10px"}}>
+                <TextBacking>
+                    <label style={{marginRight: 10, marginLeft: 10}} htmlFor="Email">Email</label>
+                    <input style={{}} defaultValue={user.email} required id="email" type="email" placeholder="new email"/>
+                </TextBacking>
+                
             </div>
                 
-            <div style={{textAlign: "center"}} >
+            <div style={{textAlign: "center", marginTop:"10px"}} >
+                <TextBacking>
                 <label style={{marginRight: 10, marginLeft: 5}} htmlFor="name">Name</label>
-                <input style={{textAlign: "center", marginBottom: 10, marginRight: 10, borderRadius: 10, borderColor: "gray"}} defaultValue={user.name} required id="name" type="name" placeholder="new name"/>
+                <input style={{}} defaultValue={user.name} required id="name" type="name" placeholder="new name"/>
+                </TextBacking>
             </div>
             
-            <div style={{textAlign: "center"}}>
-                <label style={{marginRight: 10, marginLeft: -20}} htmlFor="password">Password</label>
-                <input style={{textAlign: "center", marginBottom: 50, marginRight: 10, borderRadius: 10, borderColor: "gray"}} defaultValue={user.password} required id="password" type="password" placeholder="new password"/>
+            <div style={{textAlign: "center", marginTop:"10px", marginBottom:"10px"}}>
+                <TextBacking> 
+                <label htmlFor="password">Password</label>
+                <input  defaultValue={user.password} required id="password" type="password" placeholder="new password"/>
+                </TextBacking> 
             </div>
 
-            <div style={{textAlign: "center"}}>
+            <div style={{textAlign: "center", marginTop:"10px"}}>
+                <TextBacking>
                 <label style={{marginRight: 10, marginLeft: 10}} >Vaccinations:</label>
                 <label htmlFor="malaria"> Malaria</label>
                 <input defaultChecked={user.vaccinations.malaria} id="malaria" type="checkbox"></input>
@@ -158,10 +172,14 @@ function LoginPage() {
 
                 <label htmlFor="cholera"> Cholera</label>
                 <input  defaultChecked={user.vaccinations.cholera} id="cholera" type="checkbox"></input>
+                </TextBacking>
+                
             </div>
 
             <div style={{textAlign: "center", marginTop: 20, marginLeft: 25}}>
-            <label>Languages:</label>
+                <TextBacking>
+                <label>Languages:</label>
+                </TextBacking>
             </div>
 
             <div style={{textAlign: "center"}} id='languages'>

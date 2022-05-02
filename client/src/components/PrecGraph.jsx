@@ -23,9 +23,9 @@ ChartJS.register(
 
 
 function LineChart(props) {
-    const average = Object.values(props.months).map((value) => value.pAvg)
-    const min = Object.values(props.months).map((value) => value.pMin)
-    const max = Object.values(props.months).map((value) => value.pMax)
+    const average = Object.values(props.months).map((value) => value.pAvg / 25.4)
+    const min = Object.values(props.months).map((value) => value.pMin / 25.4)
+    const max = Object.values(props.months).map((value) => value.pMax / 25.4)
     const options = {
         responsive: true,
         plugins: {
@@ -41,7 +41,7 @@ function LineChart(props) {
             yAxis: {
                 title: {
                     display: true,
-                    text: "Temperature in Farenheight",
+                    text: "Precipitation (inches)",
                     font: {
                         size: 10
                     },

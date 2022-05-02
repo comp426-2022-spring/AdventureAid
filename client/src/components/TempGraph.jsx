@@ -41,7 +41,7 @@ function TempGraph(props) {
           yAxis: {
               title: {
                   display: true,
-                  text: "Temperature in Farenheight",
+                  text: "Temperature (fahrenheit)",
                   font: {
                       size: 10
                   },

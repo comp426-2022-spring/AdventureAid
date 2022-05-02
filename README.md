@@ -12,9 +12,10 @@ Looking to travel out of the country? AdventureAid is here to help! AdventureAid
 4. Use command `npm run client` *in a different terminal* to run client code
 5. Go to [https://localhost:3000/](https://localhost:3000/) in a browser to open the site
 
-**_NOTE:_ on mac, these commands do not work and you should install and run `npm start` directly in the server and client directories**
+**NOTE:** on Mac, these commands do not work and you should run `npm install` and run `npm start` directly in the server and client directories**
 
-##### More info on running / installation is available in [server](https://github.com/comp426-2022-spring/a99-hamal/blob/main/server/README.md) and [client](https://github.com/comp426-2022-spring/a99-hamal/blob/main/client/README.md) README files
+#### More Setup Information
+More information on running / installation is available in [server](https://github.com/comp426-2022-spring/a99-hamal/blob/main/server/README.md) and [client](https://github.com/comp426-2022-spring/a99-hamal/blob/main/client/README.md) README files
 
 ## Dependencies
 | **Dependency** | **Version** |
@@ -23,6 +24,14 @@ Looking to travel out of the country? AdventureAid is here to help! AdventureAid
 | @testing-library/react | 12.1.4 |
 | @testing-library/user-event | 13.5.0 |
 | axios | 0.26.1 |
+| cors | 2.8.5 |
+|dotenv|16.0.0|
+|express|4.17.3|
+|jsonwebtoken|8.5.1|
+|minimist|1.2.6|
+|mongodb|4.5.0|
+|mongoose|6.3.0|
+|node-fetch|3.2.3|
 | react | 17.0.1 |
 | react-dom | 17.0.2 |
 |react-router-dom|6.3.0|

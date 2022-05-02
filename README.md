@@ -9,9 +9,10 @@ Looking to travel out of the country? AdventureAid is here to help! AdventureAid
 1. clone repository
 2. npm install
 3. npm run server
-4. npm run client
+4. npm run client in a different terminal
 5. go to https://localhost:3000/
 ``````
+Note: on mac, these commands do not work and you should install and run npm start directly in the server and client directories
 
 # More info on running / installation in server and client README files
 

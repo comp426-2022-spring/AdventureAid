@@ -14,7 +14,7 @@ Looking to travel out of the country? AdventureAid is here to help! AdventureAid
 
 **NOTE:** on Mac, these commands do not work and you should run `npm install` and run `npm start` directly in the server and client directories**
 
-#### More Setup Information
+## More Setup Information
 More information on running / installation is available in [server](https://github.com/comp426-2022-spring/a99-hamal/blob/main/server/README.md) and [client](https://github.com/comp426-2022-spring/a99-hamal/blob/main/client/README.md) README files
 
 ## Dependencies

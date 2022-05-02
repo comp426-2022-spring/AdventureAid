@@ -1,5 +1,5 @@
 # Project Structure
-server - contains Express server and requests to travelbriefing API
+### server - contains Express server and requests to travelbriefing API
 
     db - contains database connection files
         conn.js - used to connect server to MongoDB database
@@ -58,7 +58,7 @@ server - contains Express server and requests to travelbriefing API
         
     travelbriefingRequests.mjs - ES6 file contains functions that reqeust information from the travelbreifing.org API
 
-client - contains ReactJS frontend package
+### client - contains ReactJS frontend package
 
     src
         components - stores component related react code and styling

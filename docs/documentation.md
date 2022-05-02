@@ -4,6 +4,8 @@ server - contains Express server and requests to travelbriefing API
     db - contains database connection files
         conn.js - used to connect server to MongoDB database
         
+    middleware - contains middlewares
+        jwtMiddleware.js - used to check if user is logged in
     routes - contains endpoints directed to the users and logs databases
     
         logs.js - endpoints to add new log documents
@@ -43,7 +45,7 @@ server - contains Express server and requests to travelbriefing API
         log-schema.js - contains Schema for information in a log document
         user-schema.js - contains Schema for information in a user document
         
-    config.env - contains MongoDB URI and Port number
+    config.env - contains MongoDB URI, JWT secret, and Port number
         
     package-lock.json - contains server package information
     package.json - contains server package information
@@ -59,8 +61,8 @@ server - contains Express server and requests to travelbriefing API
 client - contains ReactJS frontend package
 
     src
-        components - stores component related react code
-            TestButton.jsx - temporary component used to test connecting to all of the server endpoints 
+        components - stores component related react code and styling
+        pages- stores individual page related react code and styling
         services
             RequestService.js - contains functions that interact with each endpoint in server
         

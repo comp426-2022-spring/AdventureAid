@@ -35,13 +35,13 @@ function ClickedCountry(props) {
             <Card>
               <div style={{padding:"0 50px 10px 50px"}}> 
               <Card color="#F082AC">
-                <h1>{country.names.name}</h1>
-                <h3>{country.names.full}</h3>
+                <h1 style={{color:  "white", fontFamily: "Arial", textAlign: "center"}}>{country.names.name}</h1>
+                <h3 style={{color:  "white", fontFamily: "Arial", textAlign: "center"}}>{country.names.full}</h3>
               </Card>
               <div style={{margin:"10px"}}></div>
 
                 <Card color={cardcolor}> 
-                  <div>
+                  <div style={{color:  "palevioletred", fontFamily: "Arial", marginBottom: 10}}>
                       <b>Languages: </b>
                       {country.language.map((lang, i) => {
                         return (
@@ -54,43 +54,43 @@ function ClickedCountry(props) {
                       })}
                   </div>
 
-                  <div>
+                  <div style={{color:  "palevioletred", fontFamily: "Arial", marginBottom: 10}}>
                     <b>Timezone: </b>
                     <span>{country.timezone.name}</span>
                   </div>
 
-                  <div>
+                  <div style={{color:  "palevioletred", fontFamily: "Arial", marginBottom: 10}}>
                     <b>Water Quality: </b>
                     <span>{country.water.short}</span>
                   </div>
 
-                  <div>
+                  <div style={{color:  "palevioletred", fontFamily: "Arial", marginBottom: 10}}>
                     <b>Currency: </b>
                     <span>{country.currency.name}</span>
                   </div>
 
-                  <div>
+                  <div style={{color:  "palevioletred", fontFamily: "Arial", marginBottom: 10}}>
                     <b>Conversion: </b>
                     <span>1 USD is {country.currency.rate} {country.currency.name}</span>
                   </div>
 
-                  <div>
+                  <div style={{color:  "palevioletred", fontFamily: "Arial", marginBottom: 10}}>
                     <b>Advice: </b>
                     {(typeof country !== 'undefined' && typeof country.advise !== 'undefined' && typeof country.advise.UA !== 'undefined') ? <span>{country.advise.UA.advise}</span> :
                     <span>No advice</span>}
                   </div>
 
-                  <div>
+                  <div style={{color:  "palevioletred", fontFamily: "Arial", marginBottom: 10}}>
                     <b>Telephone: </b>
                     <span>Calling Code: <b>+{country.telephone.calling_code}</b> Police: <b>{country.telephone.police}</b> Ambulance: <b>{country.telephone.ambulance}</b> Fire: <b>{country.telephone.fire}</b></span>
                   </div>
 
-                  <div>
+                  <div style={{color:  "palevioletred", fontFamily: "Arial", marginBottom: 10}}>
                     <b>Electricity: </b>
                     <span>Voltage: {country.electricity.voltage} (V) Frequency: {country.electricity.frequency} (Hz)</span>
                   </div>
 
-                  <div>
+                  <div style={{color:  "palevioletred", fontFamily: "Arial", marginBottom: 10}}>
                     <b>Plugs: </b>
                     {country.electricity.plugs.map((name, i) => {
                         return (
@@ -102,7 +102,7 @@ function ClickedCountry(props) {
                       })}
                   </div>
 
-                  <div>
+                  <div style={{color:  "palevioletred", fontFamily: "Arial", marginBottom: 10}}>
                   <b>Neighbors: </b>
                   {country.neighbors.map((name, i) => {
                         return (
@@ -137,4 +137,6 @@ function ClickedCountry(props) {
       )
 }
 
+
+// {JSON.stringify(country)}
 export default ClickedCountry;

@@ -3,14 +3,16 @@ import fetch from 'node-fetch'
 function includeVaccinations(vaccinationsArr, data) {
     let vaccinations = new Set();
     for (let key in vaccinationsArr) {
-      if (vaccinationsArr[key]) vaccinations.add(key)
+      if (vaccinationsArr[key]) vaccinations.add(key.toLowerCase())
     }
     let countries = []
     for (const element of data) {
+      console.log(element.names.name)
         const countryVaccines = element.vaccinations
         let flag = true
         for (const vaccine of countryVaccines) {
-            if (!vaccinations.has(vaccine.name)) {
+            const vac = vaccine.name.toLowerCase().replaceAll(" ", "")
+            if (!vaccinations.has(vac)) {
                 flag = false
                 break
             }
@@ -22,6 +24,7 @@ function includeVaccinations(vaccinationsArr, data) {
     return countries
   }
   
+
   // Function to narrow down countries based on the languages a person knows
   function includeLanguages(languages, data) {
     let countries = []
@@ -65,5 +68,4 @@ async function getCountries() {
       });
       return values
   } 
-
   export { includeLanguages, includeVaccinations, getCountries, getCountryData, createCountriesData }

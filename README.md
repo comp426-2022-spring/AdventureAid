@@ -47,6 +47,10 @@ AdventureAid collects access logs and user profile information. These databases 
 ## API Documentation
 Full API documentation can be found [here](https://github.com/comp426-2022-spring/a99-hamal/blob/main/server/README.md#endpoints)
 
+## Project Structure
+Information about our project structure can be found [here](/docs/documentation.md)
 
+## Group Roles
+This project was developed by Team Hamal in COMP 426. Project roles can be found [here](docs/roles)
 
 

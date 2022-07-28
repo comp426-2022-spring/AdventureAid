@@ -5,6 +5,8 @@ Developed by [stephrb](https://github.com/stephrb), [bvalient](https://github.co
 ## Summary
 Looking to travel out of the country? AdventureAid is here to help! AdventureAid uses user information about vaccinations and languages spoken to match users with safe travel locations. 
 
+## [Demo](https://youtu.be/YQng9VQ6R1o)
+
 ## Setup
 1. Clone this respository
 2. Run `npm install` in the terminal to install dependencies
